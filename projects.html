@@ -4,27 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Arun Govind</title>
-  <meta name="description" content="Quantitative research and engineering projects by Arun Govind: portfolio optimization, volatility forecasting, regime detection, Monte Carlo methods.">
+  <meta name="description" content="Quantitative research and engineering projects by Arun Govind: optimization, volatility forecasting, regime detection, Monte Carlo methods.">
+  <meta name="theme-color" content="#050309">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e3b462'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='600' fill='%23050309' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;350;400;450;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+<div id="progress"></div>
 <canvas id="sky" aria-hidden="true"></canvas>
-<div class="nebula-wash" aria-hidden="true"></div>
+<div class="atmos" aria-hidden="true"></div>
 
 <nav class="top">
-  <a class="brand" href="index.html">Arun<span>&nbsp;Govind</span></a>
-  <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
-  <div class="nav-links" id="navlinks">
-    <a href="index.html">About</a>
-    <a href="experience.html">Experience</a>
-    <a href="projects.html" class="active">Projects</a>
-    <a href="venture.html" class="venture-link">Akeyra</a>
-    <a href="catchup.html">Catch&nbsp;Up</a>
-    <a href="mailto:arungovindmangalath@gmail.com">Contact</a>
+  <div class="top-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-name">Arun Govind<small>Quant · Dubai</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
+    <div class="nav-links" id="navlinks">
+      <a href="index.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="catchup.html">Catch&nbsp;Up</a>
+      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">CONTACT</a>
+    </div>
   </div>
 </nav>
 
@@ -32,101 +39,102 @@
 
   <section class="reveal">
     <p class="eyebrow">Projects</p>
-    <h2 class="section-title">Research with <em>receipts.</em></h2>
-    <p class="lede">
-      Selected work in quantitative research, risk engineering, and applied AI — each with a full
-      written report behind it.
-    </p>
-  </section>
-
-  <section class="reveal">
-    <p class="eyebrow">Quantitative research &amp; simulation</p>
-    <div class="proj-grid" style="margin-top:1.5rem">
-
-      <div class="card proj-card">
-        <span class="proj-meta">Multi-objective optimization</span>
+    <div class="section-head">
+      <h2 class="d2">Research with <em class="acc">receipts.</em></h2>
+      <p class="lede">Selected work in quantitative research, risk engineering, and applied AI — each number
+      below is a measured result, and each card carries its full written report.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="panel panel-h proj-card gold gold-m reveal">
+        <div class="proj-metric">+142 bps</div>
+        <div class="proj-metric-label">return uplift vs benchmark</div>
         <h3>NSGA-II Portfolio Optimization</h3>
-        <p>A modular Python pipeline solving the Sharpe-vs-semi-deviation trade-off with NSGA-II and Mean-CVaR — +142 bps return uplift and 16.5% lower downside risk over benchmark via 5-year rolling rebalancing and dynamic Pareto-frontier selection.</p>
-        <span class="proj-tools">Python · pymoo · cvxpy · pandas · NumPy</span>
-        <a class="report-link" href="assets/reports/nsga2-portfolio-optimization.pdf" target="_blank" rel="noopener">Read the report →</a>
+        <p>A modular Python pipeline solving the Sharpe-vs-semi-deviation trade-off with NSGA-II — 16.5% lower downside risk via 5-year rolling rebalancing and dynamic Pareto-frontier selection.</p>
+        <div class="proj-tools">Python · pymoo · cvxpy · pandas</div>
+        <a class="report-link" href="assets/reports/nsga2-portfolio-optimization.pdf" target="_blank" rel="noopener">Read the report</a>
       </div>
-
-      <div class="card proj-card">
-        <span class="proj-meta">Volatility forecasting</span>
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">−13.7%</div>
+        <div class="proj-metric-label">RMSE vs standalone GARCH</div>
         <h3>Hybrid GARCH–LSTM Volatility Model</h3>
-        <p>A hybrid model pairing GARCH for short-term spikes with LSTM for long memory — RMSE reduced 13.7% versus standalone GARCH across a 10-year walk-forward validation on S&amp;P 500 stocks.</p>
-        <span class="proj-tools">Python · arch · Keras · TensorFlow</span>
-        <a class="report-link" href="assets/reports/garch-lstm-volatility-forecasting.pdf" target="_blank" rel="noopener">Read the report →</a>
+        <p>GARCH for short-term spikes paired with LSTM for long memory, validated across a 10-year walk-forward on S&amp;P 500 stocks.</p>
+        <div class="proj-tools">Python · arch · Keras · TensorFlow</div>
+        <a class="report-link" href="assets/reports/garch-lstm-volatility-forecasting.pdf" target="_blank" rel="noopener">Read the report</a>
       </div>
-
-      <div class="card proj-card">
-        <span class="proj-meta">Regime detection</span>
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">+0.47</div>
+        <div class="proj-metric-label">Sharpe from regime switching</div>
         <h3>Hidden Markov Market Regimes</h3>
-        <p>Bull and bear regimes modeled with hidden Markov models and Viterbi smoothing — an adaptive strategy-switching layer that lifted simulated Sharpe by 0.47.</p>
-        <span class="proj-tools">Python · hmmlearn · scikit-learn</span>
-        <a class="report-link" href="assets/reports/hmm-market-regime-detection.pdf" target="_blank" rel="noopener">Read the report →</a>
+        <p>Bull and bear regimes modeled with hidden Markov models and Viterbi smoothing, driving an adaptive strategy-switching layer.</p>
+        <div class="proj-tools">Python · hmmlearn · scikit-learn</div>
+        <a class="report-link" href="assets/reports/hmm-market-regime-detection.pdf" target="_blank" rel="noopener">Read the report</a>
       </div>
-
-      <div class="card proj-card">
-        <span class="proj-meta">Monte Carlo methods</span>
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">−45%</div>
+        <div class="proj-metric-label">turnover variance</div>
         <h3>Navigating Uncertainty in Allocation</h3>
-        <p>Variance-reduction Monte Carlo (antithetic sampling, moment matching) over copula-simulated returns — cutting turnover variance by 45% and stabilizing portfolio weights under estimation noise.</p>
-        <span class="proj-tools">R · VineCopula · copula · Python</span>
-        <a class="report-link" href="assets/reports/monte-carlo-variance-reduction.pdf" target="_blank" rel="noopener">Read the report →</a>
+        <p>Variance-reduction Monte Carlo — antithetic sampling and moment matching — over copula-simulated returns, stabilizing portfolio weights under estimation noise.</p>
+        <div class="proj-tools">R · VineCopula · copula · Python</div>
+        <a class="report-link" href="assets/reports/monte-carlo-variance-reduction.pdf" target="_blank" rel="noopener">Read the report</a>
       </div>
-
-      <div class="card proj-card">
-        <span class="proj-meta">Econometrics</span>
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">OLS→L1</div>
+        <div class="proj-metric-label">shrinkage vs factor exposure</div>
         <h3>Predicting the S&amp;P 500</h3>
         <p>OLS, Ridge, and LASSO on macro and momentum features to predict constituent returns — benchmarking how shrinkage reshapes factor exposures.</p>
-        <span class="proj-tools">Python · statsmodels · scikit-learn</span>
-        <a class="report-link" href="assets/reports/sp500-econometric-prediction.pdf" target="_blank" rel="noopener">Read the report →</a>
+        <div class="proj-tools">Python · statsmodels · scikit-learn</div>
+        <a class="report-link" href="assets/reports/sp500-econometric-prediction.pdf" target="_blank" rel="noopener">Read the report</a>
       </div>
-
-      <div class="card proj-card">
-        <span class="proj-meta">Deep learning</span>
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">CNN-LSTM</div>
+        <div class="proj-metric-label">volatility-burst classifier</div>
         <h3>Deep Learning for Financial Time Series</h3>
-        <p>A CNN-LSTM trained on tick-level stock data to classify volatility bursts, with architecture and regularization tuned for stable signal capture.</p>
-        <span class="proj-tools">Python · TensorFlow · Keras</span>
-        <a class="report-link" href="assets/reports/deep-learning-financial-time-series.pdf" target="_blank" rel="noopener">Read the report →</a>
+        <p>A CNN-LSTM trained on tick-level stock data to classify volatility bursts, tuned for stable signal capture.</p>
+        <div class="proj-tools">Python · TensorFlow · Keras</div>
+        <a class="report-link" href="assets/reports/deep-learning-financial-time-series.pdf" target="_blank" rel="noopener">Read the report</a>
       </div>
-
     </div>
   </section>
+
+  <div class="rule"></div>
 
   <section class="reveal">
     <p class="eyebrow">AI &amp; ML engineering</p>
-    <div class="proj-grid" style="margin-top:1.5rem">
-      <div class="card proj-card">
-        <span class="proj-meta">IoT &amp; firmware</span>
+    <div class="proj-grid" style="margin-top:.5rem">
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">BLE</div>
+        <div class="proj-metric-label">mesh · cloud · alerts</div>
         <h3>Air Quality Monitoring with IoT</h3>
         <p>A Bluetooth-mesh ozone sensor with cloud upload and smartphone alerting, built on custom firmware and data APIs.</p>
-        <span class="proj-tools">Embedded C · BLE mesh · REST APIs</span>
+        <div class="proj-tools">Embedded C · BLE mesh · REST APIs</div>
       </div>
-      <div class="card proj-card">
-        <span class="proj-meta">Distributed ledger</span>
+      <div class="panel panel-h proj-card reveal">
+        <div class="proj-metric">2-org</div>
+        <div class="proj-metric-label">peer validation</div>
         <h3>Hyperledger Smart Contracts</h3>
-        <p>A supply-chain simulation on Hyperledger Composer covering asset tracking, smart-contract flow, and dual-org peer validation.</p>
-        <span class="proj-tools">Hyperledger Composer · JavaScript</span>
+        <p>A supply-chain simulation on Hyperledger Composer covering asset tracking, smart-contract flow, and dual-org validation.</p>
+        <div class="proj-tools">Hyperledger Composer · JavaScript</div>
       </div>
     </div>
   </section>
 
+  <div class="rule"></div>
+
   <section class="contact-band reveal">
-    <p class="eyebrow" style="justify-content:center">The biggest project</p>
-    <h2>The rest of my work lives <em>inside Akeyra.</em></h2>
-    <p>Six optimization engines, a regime-aware volatility stack, and AAOIFI screening — all in production.</p>
-    <div class="hero-cta" style="justify-content:center">
-      <a class="btn btn-gold" href="venture.html">Explore Akeyra →</a>
-    </div>
+    <p class="eyebrow gold center">Beyond the reports</p>
+    <h2 class="d2">The rest runs in production,<br><em class="acc-g">every night.</em></h2>
+    <p>Six optimization engines, a regime-aware volatility stack, and AAOIFI screening — my current work, deployed and live.</p>
+    <div class="hero-cta"><a class="btn btn-gold" href="experience.html">See the role</a></div>
   </section>
 
 </main>
 
 <footer>
-  <span>© 2026 Arun Govind</span>
-  <span>Dubai, United Arab Emirates</span>
-  <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
+  <div class="foot-inner">
+    <span>© 2026 Arun Govind</span>
+    <span>Dubai · United Arab Emirates</span>
+    <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
+  </div>
 </footer>
 
 <script src="js/site.js"></script>

@@ -3,169 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arun Govind — Quantitative Researcher &amp; Builder of Akeyra</title>
+  <title>Arun Govind — Quantitative Researcher · Builder of Akeyra</title>
   <meta name="description" content="Arun Govind — quantitative researcher and developer in Dubai. Builder of Akeyra and OperaFO, a family-wealth intelligence platform for the UAE. MQF, Rutgers.">
+  <meta name="theme-color" content="#050309">
+  <meta property="og:title" content="Arun Govind — Structure in uncertainty">
+  <meta property="og:description" content="Quantitative researcher & developer. Builder of Akeyra and OperaFO — family-wealth intelligence for the UAE.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e3b462'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='600' fill='%23050309' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;350;400;450;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+<div id="progress"></div>
 <canvas id="sky" aria-hidden="true"></canvas>
-<div class="nebula-wash" aria-hidden="true"></div>
+<div class="atmos" aria-hidden="true"></div>
 
 <nav class="top">
-  <a class="brand" href="index.html">Arun<span>&nbsp;Govind</span></a>
-  <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
-  <div class="nav-links" id="navlinks">
-    <a href="index.html" class="active">About</a>
-    <a href="experience.html">Experience</a>
-    <a href="projects.html">Projects</a>
-    <a href="venture.html" class="venture-link">Akeyra</a>
-    <a href="catchup.html">Catch&nbsp;Up</a>
-    <a href="mailto:arungovindmangalath@gmail.com">Contact</a>
+  <div class="top-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-name">Arun Govind<small>Quant · Dubai</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
+    <div class="nav-links" id="navlinks">
+      <a href="index.html" class="active">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="catchup.html">Catch&nbsp;Up</a>
+      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">CONTACT</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="hero-inner">
-    <div class="hero-copy">
-      <p class="hero-kicker">Dubai, UAE &nbsp;·&nbsp; <b>Building Akeyra</b> &nbsp;·&nbsp; MQF, Rutgers</p>
-      <h1 class="hero-name">Structure in<br><em>uncertainty.</em></h1>
-      <p class="hero-sub">
-        I'm Arun Govind — a quantitative researcher and developer with five years across portfolio
-        optimization, risk engineering, and production analytics. I build
-        <strong>Akeyra</strong>, a family-wealth intelligence platform for the UAE, and its flagship
-        system <strong>OperaFO</strong>.
+    <div>
+      <p class="hero-kicker reveal in"><span class="live">Building Akeyra</span> <span>·</span> <span>Dubai, UAE</span> <span>·</span> <span>MQF, Rutgers</span></p>
+      <h1 class="d1 reveal in d1x">Structure in<br><em class="acc">uncertainty.</em></h1>
+      <p class="hero-sub reveal in d2x">
+        Quantitative researcher &amp; developer — five years across portfolio optimization, risk
+        engineering, and production analytics. Builder of <strong>Akeyra</strong>, a family-wealth
+        intelligence platform for the UAE, and its flagship system <strong>OperaFO</strong>.
       </p>
-      <div class="hero-cta">
+      <div class="hero-cta reveal in d3x">
         <a class="btn btn-primary" href="mailto:arungovindmangalath@gmail.com">Get in touch</a>
-        <a class="btn btn-gold" href="venture.html">Explore Akeyra →</a>
+        <a class="btn btn-gold" href="projects.html">See my work</a>
         <a class="btn btn-ghost" href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="btn btn-ghost" href="https://linkedin.com/in/arun-govind-19849261" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
-    <div class="hero-portrait">
-      <div class="orbit" aria-hidden="true"></div>
+    <div class="op-card reveal in d2x">
+      <div class="op-head">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>operator · GST +4</span>
+      </div>
       <img src="assets/img/headshot.png" alt="Portrait of Arun Govind">
+      <div class="op-foot">
+        <div><b>5Y</b><span>quant &amp; risk</span></div>
+        <div><b>MQF</b><span>Rutgers '25</span></div>
+        <div><b>DXB</b><span>Dubai, UAE</span></div>
+      </div>
     </div>
   </div>
 </header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Portfolio optimization · HRP · Mean-CVaR · Black-Litterman<i>◆</i>GARCH · HMM · vine copulas<i>◆</i>VaR · CVaR · PFE · stress testing<i>◆</i>Python · R · C++ · SQL · MATLAB<i>◆</i>Sharpe 1.47 · +142 bps · −45% turnover variance<i>◆</i>MQF Rutgers · IIT Guwahati AI/ML<i>◆</i></span>
+    <span>Portfolio optimization · HRP · Mean-CVaR · Black-Litterman<i>◆</i>GARCH · HMM · vine copulas<i>◆</i>VaR · CVaR · PFE · stress testing<i>◆</i>Python · R · C++ · SQL · MATLAB<i>◆</i>Sharpe 1.47 · +142 bps · −45% turnover variance<i>◆</i>MQF Rutgers · IIT Guwahati AI/ML<i>◆</i></span>
+  </div>
+</div>
 
 <main>
 
   <section id="about" class="reveal">
     <p class="eyebrow">About</p>
-    <h2 class="section-title">From switchgear to <em>stochastic calculus.</em></h2>
-    <p class="lede" style="margin-bottom:1.2rem">
-      My path runs from electrical systems at NIT Delhi, through finance automation at Americana in the
-      Gulf, to quantitative finance at Rutgers — and now back to Dubai, where I build the software a
-      UAE family office actually needs.
-    </p>
-    <p class="lede" style="margin-bottom:1.2rem">
-      My work sits at the intersection of markets, code, and rigorous theory: regime modeling with
-      ARIMA–GARCH and hidden Markov models, tail risk with vine copulas and 10,000-path Monte Carlo,
-      and multi-objective allocation with HRP, Mean-CVaR, and Black-Litterman — across market, credit,
-      liquidity, and operational risk.
-    </p>
-    <p class="lede">
-      I prioritize robust, transparent financial systems that adapt to volatility and let decision-makers
-      act on evidence, not intuition — from the research code all the way down to the Nginx config it
-      runs behind.
-    </p>
+    <div class="about-grid">
+      <h2 class="d2">From switchgear to <em class="acc">stochastic calculus.</em></h2>
+      <div class="about-copy">
+        <p>My path runs from electrical systems at NIT Delhi, through finance automation at Americana
+        in the Gulf, to quantitative finance at Rutgers — and now back to Dubai, where I build the
+        software a UAE family office actually needs.</p>
+        <p>The work sits where markets, code, and rigorous theory meet: regime modeling with
+        <b>ARIMA-GARCH</b> and hidden Markov models, tail risk with <b>vine copulas</b> and
+        10,000-path Monte Carlo, and multi-objective allocation with <b>HRP, Mean-CVaR, and
+        Black-Litterman</b> — across market, credit, liquidity, and operational risk.</p>
+        <p>I build transparent financial systems that adapt to volatility and let decision-makers act
+        on evidence, not intuition — from the research code all the way down to the Nginx config it
+        runs behind.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="venture" class="reveal">
-    <p class="eyebrow">Current venture</p>
-    <h2 class="section-title">Markets sleep. <em>The mesh does not.</em></h2>
-    <div class="venture-feature">
-      <span class="venture-tag">Founder-builder · Dec 2025 – present · DIFC, Dubai</span>
-      <h3>Akeyra <em>&amp; OperaFO</em></h3>
-      <p>
-        A UAE family can hold its wealth across dozens of entities, a dozen custodians, and several
-        jurisdictions — much of it in private assets no statement ever shows. Akeyra is the
-        family-wealth intelligence company I'm building to see all of it clearly. OperaFO is its
-        flagship platform: every night, a mesh of always-on agents reads the whole book — risk,
-        Shariah compliance, analytics, data, advisory — and a brief lands at sunrise.
+  <div class="rule"></div>
+
+  <section id="now" class="reveal">
+    <p class="eyebrow gold">Now · Quantitative Researcher &amp; Developer</p>
+    <div class="section-head">
+      <h2 class="d2">What I'm building <em class="acc-g">right now.</em></h2>
+    </div>
+    <div class="panel gold venture-wrap">
+      <div class="v-top">
+        <h3 class="d3">Akeyra <em class="acc-g">(OperaFO)</em> — Dubai</h3>
+        <span class="v-badge">Dec 2025 — Present</span>
+      </div>
+      <p class="lede">
+        My current role: designing and running the quantitative core of a wealth-analytics platform
+        for UAE family offices — end to end, from the research models to the server they run on.
       </p>
       <div class="stat-row">
         <div class="stat"><b>9,500</b><span>lines of production Python, deployed end to end</span></div>
-        <div class="stat"><b>22</b><span>nightly agents across five teams</span></div>
+        <div class="stat"><b>6</b><span>portfolio-construction engines</span></div>
         <div class="stat"><b>10,000</b><span>copula–Monte Carlo paths per run</span></div>
-        <div class="stat"><b>06:15</b><span>GST — the morning brief lands</span></div>
+        <div class="stat"><b>5</b><span>base currencies consolidated</span></div>
       </div>
-      <p style="margin-bottom:1.6rem">
-        Six portfolio-construction engines, a regime-aware GARCH + HMM volatility stack, AAOIFI-aligned
-        Sharia screening, and multi-currency consolidation across AED, USD, SAR, EUR, and GBP —
-        built AED-first and bilingual, for the structures a UAE estate is actually made of.
+      <p class="lede" style="margin-bottom:1.8rem">
+        A regime-aware GARCH + HMM volatility stack, AAOIFI-aligned Sharia screening across 4
+        standards, walk-forward rebalancing, and multi-currency consolidation — self-hosted on a
+        hardened Linux stack with Nginx, systemd, and per-user authentication.
       </p>
-      <a class="btn btn-gold" href="venture.html">See the full story →</a>
+      <a class="btn btn-gold" href="experience.html">Full role details</a>
     </div>
   </section>
+
+  <div class="rule"></div>
 
   <section id="education" class="reveal">
     <p class="eyebrow">Education</p>
-    <h2 class="section-title">Five institutions, <em>one trajectory.</em></h2>
-    <div class="edu-grid">
-      <div class="card edu-entry">
+    <div class="section-head"><h2 class="d2">Five institutions, <em class="acc">one trajectory.</em></h2></div>
+    <div class="edu-list">
+      <div class="edu-row">
         <img class="edu-logo" src="assets/img/rutgers.png" alt="Rutgers Business School logo">
         <div>
-          <div class="edu-head">
-            <h3>Rutgers Business School, Newark — Master of Quantitative Finance</h3>
-            <span class="mono-date">2023 – 2025</span>
-          </div>
-          <p>Financial Modeling · Stochastic Calculus · Risk Management · Quantitative Equity Trading · Fixed Income &amp; Term Structure Models · AI Methods</p>
+          <h3>Rutgers Business School — Master of Quantitative Finance</h3>
+          <p>Financial Modeling · Stochastic Calculus · Risk Management · Quantitative Equity Trading · Fixed Income</p>
         </div>
+        <span class="mono-date">2023 – 2025</span>
       </div>
-      <div class="card edu-entry">
+      <div class="edu-row">
         <img class="edu-logo" src="assets/img/iitg.png" alt="IIT Guwahati logo">
         <div>
-          <div class="edu-head">
-            <h3>IIT Guwahati — PG Certification in AI &amp; ML</h3>
-            <span class="mono-date">2020 – 2021</span>
-          </div>
-          <p>Deep Learning (DNN, RNN, CNN, LSTM) · Reinforcement Learning · Probabilistic Graphical Models · Computer Vision</p>
+          <h3>IIT Guwahati — PG Certification in AI &amp; ML</h3>
+          <p>Deep Learning (DNN, RNN, CNN, LSTM) · Reinforcement Learning · Probabilistic Graphical Models</p>
         </div>
+        <span class="mono-date">2020 – 2021</span>
       </div>
-      <div class="card edu-entry">
+      <div class="edu-row">
         <img class="edu-logo" src="assets/img/oxford.png" alt="Oxford Brookes University logo">
         <div>
-          <div class="edu-head">
-            <h3>Oxford Brookes, UK — ACCA</h3>
-            <span class="mono-date">2020 – 2023</span>
-          </div>
-          <p>Financial Accounting · Management Accounting · Financial Management · Performance Management (ACCA Reg #: 4939516)</p>
+          <h3>Oxford Brookes, UK — ACCA</h3>
+          <p>Financial Accounting · Management Accounting · Financial Management · Performance Management</p>
         </div>
+        <span class="mono-date">2020 – 2023</span>
       </div>
-      <div class="card edu-entry">
+      <div class="edu-row">
         <img class="edu-logo" src="assets/img/ibmi.png" alt="IBMI Berlin logo">
         <div>
-          <div class="edu-head">
-            <h3>IBMI Berlin — Global Governance</h3>
-            <span class="mono-date">2018 – 2019</span>
-          </div>
+          <h3>IBMI Berlin — Global Governance</h3>
           <p>Global Governance · International Law · International Politics · Essential Management Skills</p>
         </div>
+        <span class="mono-date">2018 – 2019</span>
       </div>
-      <div class="card edu-entry">
+      <div class="edu-row">
         <img class="edu-logo" src="assets/img/nitd.png" alt="NIT Delhi logo">
         <div>
-          <div class="edu-head">
-            <h3>NIT Delhi — B.Tech, Electrical &amp; Electronics Engineering</h3>
-            <span class="mono-date">2016 – 2020</span>
-          </div>
-          <p>Computational Methods in Engineering Analysis · Signal Processing · Embedded Optimization · Field Modeling</p>
+          <h3>NIT Delhi — B.Tech, Electrical &amp; Electronics Engineering</h3>
+          <p>Computational Methods · Signal Processing · Embedded Optimization · Field Modeling</p>
         </div>
+        <span class="mono-date">2016 – 2020</span>
       </div>
     </div>
   </section>
 
+  <div class="rule"></div>
+
   <section id="skills" class="reveal">
     <p class="eyebrow">Toolkit</p>
-    <h2 class="section-title">From research code to <em>running systems.</em></h2>
+    <div class="section-head"><h2 class="d2">Research code to <em class="acc">running systems.</em></h2></div>
     <div class="skill-grid">
-      <div class="card skill-card">
+      <div class="panel panel-h skill-card">
         <h3>Programming &amp; Data</h3>
         <div class="chips">
           <span class="chip">Python</span><span class="chip">pandas · NumPy</span><span class="chip">scikit-learn</span>
@@ -173,7 +191,7 @@
           <span class="chip">R (VineCopula)</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">MATLAB</span><span class="chip">VBA</span>
         </div>
       </div>
-      <div class="card skill-card">
+      <div class="panel panel-h skill-card">
         <h3>Risk &amp; Regulation</h3>
         <div class="chips">
           <span class="chip">VaR / ES (CVaR)</span><span class="chip">PFE</span><span class="chip">Stress testing</span>
@@ -181,7 +199,7 @@
           <span class="chip">AAOIFI Sharia screening</span><span class="chip">KRI / KPI frameworks</span>
         </div>
       </div>
-      <div class="card skill-card">
+      <div class="panel panel-h skill-card">
         <h3>Quant &amp; Production</h3>
         <div class="chips">
           <span class="chip">GARCH / HMM</span><span class="chip">Monte Carlo + variance reduction</span>
@@ -190,7 +208,7 @@
           <span class="chip">Streamlit</span><span class="chip">Git / CI</span><span class="chip">RPA / UiPath</span>
         </div>
       </div>
-      <div class="card skill-card">
+      <div class="panel panel-h skill-card">
         <h3>BI &amp; Reporting</h3>
         <div class="chips">
           <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Plotly / Dash</span>
@@ -200,11 +218,13 @@
     </div>
   </section>
 
+  <div class="rule"></div>
+
   <section class="contact-band reveal" id="contact">
-    <p class="eyebrow" style="justify-content:center">Contact</p>
-    <h2>Let's talk about <em>markets, models, or mandates.</em></h2>
+    <p class="eyebrow gold center">Contact</p>
+    <h2 class="d2">Let's talk markets, models,<br><em class="acc-g">or mandates.</em></h2>
     <p>Based in Dubai, open to relocation globally. Reach out about quant research, risk engineering, or Akeyra.</p>
-    <div class="hero-cta" style="justify-content:center">
+    <div class="hero-cta">
       <a class="btn btn-primary" href="mailto:arungovindmangalath@gmail.com">arungovindmangalath@gmail.com</a>
       <a class="btn btn-ghost" href="https://linkedin.com/in/arun-govind-19849261" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
@@ -213,9 +233,11 @@
 </main>
 
 <footer>
-  <span>© 2026 Arun Govind</span>
-  <span>Dubai, United Arab Emirates</span>
-  <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
+  <div class="foot-inner">
+    <span>© 2026 Arun Govind</span>
+    <span>Dubai · United Arab Emirates</span>
+    <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
+  </div>
 </footer>
 
 <script src="js/site.js"></script>

@@ -5,48 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catch Up — Arun Govind</title>
   <meta name="description" content="Essays by Arun Govind on quantitative finance, optimization, and systems thinking.">
+  <meta name="theme-color" content="#050309">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e3b462'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='600' fill='%23050309' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;350;400;450;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    .post{border:1px solid var(--line);border-radius:var(--r);margin-bottom:1.1rem;background:var(--card);backdrop-filter:blur(6px);transition:border-color .3s}
-    .post[open]{border-color:var(--line-strong)}
-    .post summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:1.2rem;padding:1.3rem 1.5rem}
-    .post summary::-webkit-details-marker{display:none}
-    .post-date{font-family:var(--font-mono);font-size:.72rem;color:var(--gold);letter-spacing:.08em;white-space:nowrap}
-    .post-title{font-family:var(--font-display);font-size:1.25rem;flex:1}
-    .post-caret{font-family:var(--font-mono);color:var(--faint);transition:transform .3s}
-    .post[open] .post-caret{transform:rotate(45deg);color:var(--gold)}
-    .post-body{padding:0 1.5rem 1.6rem;border-top:1px solid var(--line);padding-top:1.4rem;margin:0 0}
-    @media (max-width:640px){.post summary{flex-wrap:wrap;gap:.4rem}.post-title{flex-basis:100%;order:2}}
-  </style>
 </head>
 <body>
 
+<div id="progress"></div>
 <canvas id="sky" aria-hidden="true"></canvas>
-<div class="nebula-wash" aria-hidden="true"></div>
+<div class="atmos" aria-hidden="true"></div>
 
 <nav class="top">
-  <a class="brand" href="index.html">Arun<span>&nbsp;Govind</span></a>
-  <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
-  <div class="nav-links" id="navlinks">
-    <a href="index.html">About</a>
-    <a href="experience.html">Experience</a>
-    <a href="projects.html">Projects</a>
-    <a href="venture.html" class="venture-link">Akeyra</a>
-    <a href="catchup.html" class="active">Catch&nbsp;Up</a>
-    <a href="mailto:arungovindmangalath@gmail.com">Contact</a>
+  <div class="top-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-name">Arun Govind<small>Quant · Dubai</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
+    <div class="nav-links" id="navlinks">
+      <a href="index.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="catchup.html" class="active">Catch&nbsp;Up</a>
+      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">CONTACT</a>
+    </div>
   </div>
 </nav>
 
 <main>
   <section class="reveal">
     <p class="eyebrow">Catch Up</p>
-    <h2 class="section-title">Notes from the <em>night shift.</em></h2>
+    <div class="section-head">
+      <h2 class="d2">Notes from the <em class="acc">night shift.</em></h2>
+    </div>
     <p class="essay-epigraph">それを発見して今幸せですか?</p>
-
-    <details class="post" open>
+    <details class="post panel" open>
       <summary>
         <span class="post-date">May 20, 2025</span>
         <span class="post-title">Why the Next Financial Renaissance Will Be Quant-Driven</span>
@@ -66,7 +62,7 @@
         <p>In short: the next financial renaissance won’t be powered by opaque speculation or heuristics. It will be driven by quantitative systems designed to predict, explain, and endure. For financial institutions, regulators, and technologists, the opportunity is to build models that are not adversaries of uncertainty and not just blackboxes for alpha but interpretable engines of risk informed insight.</p>
       </div>
     </details>
-    <details class="post">
+    <details class="post panel">
       <summary>
         <span class="post-date">May 16, 2025</span>
         <span class="post-title">My Top 5 Lessons from Building an NSGA-II Portfolio Optimizer</span>
@@ -82,7 +78,7 @@
         <p>Looking back, the NSGA-II project wasn’t just about producing an optimizer; it was about learning to navigate the messy middle ground between mathematical purity and practical constraints. The experience left me with a deeper respect for multi objective optimization in finance not because it gives you one “right” answer, but because it forces you to engage with the fact that there rarely is one. And in a world where markets are complex, noisy, and multi-faceted, that might be the most valuable lesson of all.</p>
       </div>
     </details>
-    <details class="post">
+    <details class="post panel">
       <summary>
         <span class="post-date">May 12, 2025</span>
         <span class="post-title">Chess, Code & Control Systems: How Schooling Shaped My Intuition</span>
@@ -105,9 +101,11 @@
 </main>
 
 <footer>
-  <span>© 2026 Arun Govind</span>
-  <span>Dubai, United Arab Emirates</span>
-  <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
+  <div class="foot-inner">
+    <span>© 2026 Arun Govind</span>
+    <span>Dubai · United Arab Emirates</span>
+    <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
+  </div>
 </footer>
 
 <script src="js/site.js"></script>
