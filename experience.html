@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Experience — Arun Govind</title>
   <meta name="description" content="Professional experience of Arun Govind: Akeyra, Rutgers, Go5, Americana, JPMorgan Chase, and more.">
-  <meta name="theme-color" content="#050309">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e3b462'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='600' fill='%23050309' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#06080d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2306080d'/%3E%3Crect x='4' y='4' width='56' height='56' rx='9' fill='none' stroke='%236fd6e8' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='24' font-weight='600' fill='%236fd6e8' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;350;400;450;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;640;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <div id="progress"></div>
-<canvas id="sky" aria-hidden="true"></canvas>
-<div class="atmos" aria-hidden="true"></div>
+<div class="paper" aria-hidden="true"></div>
 
 <nav class="top">
   <div class="top-inner">
@@ -26,99 +25,82 @@
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
     <div class="nav-links" id="navlinks">
-      <a href="index.html">About</a>
-      <a href="experience.html" class="active">Experience</a>
-      <a href="projects.html">Projects</a>
-      <a href="catchup.html">Catch&nbsp;Up</a>
-      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">CONTACT</a>
+      <a href="index.html">about</a>
+      <a href="experience.html" class="active">experience</a>
+      <a href="projects.html">projects</a>
+      <a href="catchup.html">catch-up</a>
+      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">contact</a>
     </div>
   </div>
 </nav>
 
-<main>
+<main style="padding-top:1rem">
 
-  <section class="reveal">
-    <p class="eyebrow">Experience</p>
-    <div class="section-head">
-      <h2 class="d2">Eight years, three continents,<br><em class="acc">one thread.</em></h2>
-      <p class="lede">From automating finance operations in the Gulf, to research at Rutgers, to building a
-      production wealth-intelligence platform in Dubai — every role sharpened the same craft: turning
-      uncertainty into systems.</p>
-    </div>
+  <section class="reveal" style="border-bottom:none">
+    <p class="tick"><span class="idx">/</span> experience</p>
+    <h2 class="d2">Eight years, three continents,<br><span class="hi">one thread.</span></h2>
+    <p class="lede" style="margin:1.1rem 0 2.6rem">From automating finance operations in the Gulf, to research at
+    Rutgers, to building production analytics in Dubai — every role sharpened the same craft: turning
+    uncertainty into systems.</p>
     <div class="timeline">
       <div class="t-entry current reveal">
         <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card gold">
-          <div class="t-head">
-            <h3>Quantitative Researcher &amp; Developer — Founder-builder</h3>
-            <span class="mono-date">Dec 2025 – Present</span>
-          </div>
+        <div class="panel amber corner t-card">
+          <div class="t-head"><h3>Quantitative Researcher &amp; Developer</h3><span class="mono-date">Dec 2025 – Present</span></div>
           <p class="t-org">Akeyra (formerly OperaFO) · Dubai, UAE</p>
           <ul>
-            <li>Architected and shipped a <b>9,500-line production Python platform</b>: 6 portfolio-construction models (Max Sharpe, Min Volatility, Risk Parity, Black-Litterman, Max Diversification, Min CVaR), an interactive efficient-frontier explorer, and walk-forward rebalancing across 60–252-day lookback windows.</li>
-            <li>Engineered a regime-aware volatility stack — GARCH(1,1) plus a 3-state HMM (bull, sideways, crisis) — feeding <b>10,000-path copula–Monte Carlo</b> simulation with antithetic variates and moment matching, producing 7 risk metrics per regime.</li>
-            <li>Built an <b>AAOIFI-aligned Sharia screening engine</b> spanning 4 compliance standards and 6 financial-ratio filters, integrated into the optimization pipeline for simultaneous Sharia and ESG filtering across GCC and global universes.</li>
-            <li>Implemented multi-currency consolidation across <b>5 base currencies</b> (AED, USD, SAR, EUR, GBP) with FX-adjusted return attribution and Zakat-aware reporting for mandates spanning DIFC, ADGM, and offshore vehicles.</li>
-            <li>Own the full stack end to end: production deployment on a Hetzner VPS (Ubuntu, Nginx, systemd, Certbot SSL, Cloudflare DNS) with per-user authentication, refactored from a monolith into a modular architecture with isolated test surfaces.</li>
+            <li>Architected and shipped a <b>9,500-line production Python platform</b>: 6 portfolio-construction models (Max Sharpe, Min Volatility, Risk Parity, Black-Litterman, Max Diversification, Min CVaR), an interactive efficient-frontier explorer, and walk-forward rebalancing across 60–252-day lookbacks.</li>
+            <li>Engineered a regime-aware volatility stack — GARCH(1,1) plus a 3-state HMM (bull, sideways, crisis) — feeding <b>10,000-path copula–Monte Carlo</b> with antithetic variates and moment matching, producing 7 risk metrics per regime.</li>
+            <li>Built an <b>AAOIFI-aligned Sharia screening engine</b> spanning 4 compliance standards and 6 financial-ratio filters, integrated into the optimization pipeline across GCC and global universes.</li>
+            <li>Implemented multi-currency consolidation across <b>5 base currencies</b> (AED, USD, SAR, EUR, GBP) with FX-adjusted return attribution and Zakat-aware reporting for DIFC, ADGM, and offshore mandates.</li>
+            <li>Own the full stack: production deployment on a Hetzner VPS (Ubuntu, Nginx, systemd, Certbot SSL, Cloudflare DNS) with per-user authentication; refactored a monolith into a modular architecture with isolated test surfaces.</li>
           </ul>
         </div>
       </div>
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Graduate Research Assistant</h3>
-            <span class="mono-date">Jan 2024 – May 2025</span>
-          </div>
+          <div class="t-head"><h3>Graduate Research Assistant</h3><span class="mono-date">Jan 2024 – May 2025</span></div>
           <p class="t-org"><img src="assets/img/rutgers.png" alt="">Rutgers University · Newark, NJ, USA</p>
           <ul>
             <li>Built a dual-model forecasting pipeline (ARIMA-GARCH vs LSTM) across 20 S&amp;P 500 stocks: <b>15.2% lower MAE</b> in stable regimes, <b>+10.7% directional accuracy</b> in volatile ones.</li>
-            <li>Deployed forecasts into a $1M simulated DJIA portfolio rebalanced weekly with transaction costs — <b>Sharpe 1.47, +7.93% return, 310 bps drawdown reduction</b> via HRP and Mean-CVaR optimization.</li>
-            <li>Integrated macro filters (CPI, NFP, FOMC) into rebalancing logic, avoiding <b>75% of volatility shocks</b>; tightened frontier confidence bands by 38.6% and improved weight consistency by 33.2%.</li>
-            <li>Packaged the codebase as a reproducible research template (cookiecutter, Make, conda) with data-lineage logs supporting auditability.</li>
+            <li>Deployed forecasts into a $1M simulated DJIA portfolio rebalanced weekly with transaction costs — <b>Sharpe 1.47, +7.93% return, 310 bps drawdown reduction</b> via HRP and Mean-CVaR.</li>
+            <li>Integrated macro filters (CPI, NFP, FOMC), avoiding <b>75% of volatility shocks</b>; tightened frontier confidence bands by 38.6% and improved weight consistency by 33.2%.</li>
+            <li>Packaged the codebase as a reproducible research template (cookiecutter, Make, conda) with data-lineage logs.</li>
           </ul>
         </div>
       </div>
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Financial Analyst, Pricing</h3>
-            <span class="mono-date">Aug 2022 – Jul 2023</span>
-          </div>
+          <div class="t-head"><h3>Financial Analyst, Pricing</h3><span class="mono-date">Aug 2022 – Jul 2023</span></div>
           <p class="t-org"><img src="assets/img/Go5inc.png" alt="">Go5 Incorporation · India</p>
           <ul>
             <li>Deployed an XGBoost + logistic-regression demand-forecasting stack — <b>28.4% accuracy uplift</b>, 12% less excess inventory.</li>
             <li>Built scenario models across three economic outlooks, improving margin forecasts by 6% and accelerating break-even by 2 months for two SKUs.</li>
-            <li>Developed a drift-scoring algorithm monitoring 5+ predictive models, cutting drift-triggered misclassifications by 17%; A/B pricing pilots delivered a 3.4% conversion lift.</li>
+            <li>Developed a drift-scoring algorithm across 5+ models, cutting drift-triggered misclassifications by 17%; A/B pricing pilots delivered a 3.4% conversion lift.</li>
           </ul>
         </div>
       </div>
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Process Analyst, Finance</h3>
-            <span class="mono-date">Mar 2021 – Jul 2022</span>
-          </div>
+          <div class="t-head"><h3>Process Analyst, Finance</h3><span class="mono-date">Mar 2021 – Jul 2022</span></div>
           <p class="t-org"><img src="assets/img/Americana.png" alt="">Americana (Kuwait Food Company) · UAE</p>
           <ul>
-            <li>Automated invoice processing and reconciliation with UiPath and VBA bots — <b>40% less manual processing</b>, closings accelerated by 3 business days across all GCC branches.</li>
+            <li>Automated invoice processing and reconciliation with UiPath and VBA bots — <b>40% less manual processing</b>, closings 3 business days faster across all GCC branches.</li>
             <li>Built liquidity-exposure and vendor-aging dashboards with counterparty risk flags, lowering overdue payables by 18%.</li>
-            <li>Processed $3M+ in monthly settlements, reconciling vendor statements and resolving GCC VAT discrepancies; redesigned SAP BODS migration templates across two ERP systems.</li>
+            <li>Processed $3M+ in monthly settlements; redesigned SAP BODS migration templates across two ERP systems.</li>
           </ul>
         </div>
       </div>
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Data Analytics Intern</h3>
-            <span class="mono-date">Aug 2020 – Oct 2020</span>
-          </div>
+          <div class="t-head"><h3>Data Analytics Intern</h3><span class="mono-date">Aug 2020 – Oct 2020</span></div>
           <p class="t-org"><img src="assets/img/JPMorgan.png" alt="">JPMorgan Chase &amp; Co. · USA</p>
           <ul>
-            <li>Built a Python dashboard visualizing 5Y+ rolling stock-correlation matrices, flagging under- and over-valued equities for trading teams.</li>
+            <li>Built a Python dashboard of 5Y+ rolling stock-correlation matrices, flagging mispriced equities for trading teams.</li>
             <li>Scraped and structured <b>10,000+ company profiles</b> via RPA, boosting research efficiency by 52%; shipped a reusable Python library with unit tests and CI.</li>
           </ul>
         </div>
@@ -126,23 +108,17 @@
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Quant Automation Intern</h3>
-            <span class="mono-date">Dec 2019 – Jan 2020</span>
-          </div>
+          <div class="t-head"><h3>Quant Automation Intern</h3><span class="mono-date">Dec 2019 – Jan 2020</span></div>
           <p class="t-org"><img src="assets/img/RetailAutomata.png" alt="">Retail Automata Analytics · USA</p>
           <ul>
-            <li>Automated product-insight workflows with RPA and logistic regression, processing 12,000+ listings and reducing manual curation by 90%.</li>
+            <li>Automated product-insight workflows with RPA and logistic regression across 12,000+ listings, reducing manual curation by 90%.</li>
           </ul>
         </div>
       </div>
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Fundraising &amp; Analytics Intern</h3>
-            <span class="mono-date">Aug 2019 – Sep 2019</span>
-          </div>
+          <div class="t-head"><h3>Fundraising &amp; Analytics Intern</h3><span class="mono-date">Aug 2019 – Sep 2019</span></div>
           <p class="t-org"><img src="assets/img/hwcouncil.jpg" alt="">Humanity Welfare Council · India</p>
           <ul>
             <li>Led donor analytics with clustering and dashboards, improving engagement conversion by 23%.</li>
@@ -152,26 +128,20 @@
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Network Analytics Intern</h3>
-            <span class="mono-date">Jun 2019 – Jul 2019</span>
-          </div>
+          <div class="t-head"><h3>Network Analytics Intern</h3><span class="mono-date">Jun 2019 – Jul 2019</span></div>
           <p class="t-org"><img src="assets/img/nepaltelecom.png" alt="">Nepal Telecom · Nepal</p>
           <ul>
-            <li>Analyzed GSM service quality and churn; benchmarked provider performance and proposed a tower-relocation plan from z-score metrics.</li>
+            <li>Analyzed GSM service quality and churn; proposed a tower-relocation plan from z-score benchmarks.</li>
           </ul>
         </div>
       </div>
       <div class="t-entry reveal">
         <span class="t-dot" aria-hidden="true"></span>
         <div class="panel t-card">
-          <div class="t-head">
-            <h3>Systems Intern</h3>
-            <span class="mono-date">May 2018 – Jul 2018</span>
-          </div>
+          <div class="t-head"><h3>Systems Intern</h3><span class="mono-date">May 2018 – Jul 2018</span></div>
           <p class="t-org"><img src="assets/img/maxelec.jpg" alt="">Max Elect · UAE</p>
           <ul>
-            <li>Assisted in design and installation of low-voltage switchgear, capacitor banks, and SCADA/PLC panels; produced AutoCAD schematics and QHSE-compliant documentation.</li>
+            <li>Assisted with low-voltage switchgear, capacitor banks, and SCADA/PLC panels; produced AutoCAD schematics and QHSE documentation.</li>
           </ul>
         </div>
       </div>
