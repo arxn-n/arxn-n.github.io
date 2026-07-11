@@ -28,7 +28,7 @@
       overflow-x:hidden;
       position:relative;
       /* ✨ Hiding the default cursor */
-      cursor: none;
+      cursor: auto;
     }
     /* --- ✨ NEW: Interactive Particle Background --- */
     #particles-js {
@@ -47,28 +47,8 @@
         pointer-events: none;
         transition: transform 0.1s ease;
     }
-    .cursor-dot {
-        width: 6px;
-        height: 6px;
-        background-color: var(--accent-secondary);
-        border-radius: 50%;
-    }
-    .cursor-circle {
-        width: 30px;
-        height: 30px;
-        border: 1px solid var(--accent-secondary);
-        border-radius: 50%;
-        position: absolute;
-        top: -12px;
-        left: -12px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
     
     /* Cursor hover effects */
-    body:has(a:hover) .cursor-circle {
-        transform: scale(1.5);
-        opacity: 0.5;
-    }
 
     /* Animation Keyframes */
     @keyframes slide-up-fade-in {
@@ -228,8 +208,6 @@
 <body>
   <!-- ✨ NEW: Custom Cursor and Particle Background Elements -->
   <div class="cursor">
-    <div class="cursor-dot"></div>
-    <div class="cursor-circle"></div>
   </div>
   <div id="particles-js"></div>
 
@@ -357,14 +335,6 @@
         "retina_detect": true
       });
 
-      // --- 2. Custom Cursor ---
-      const cursorDot = document.querySelector('.cursor-dot');
-      const cursorCircle = document.querySelector('.cursor-circle');
-      window.addEventListener('mousemove', e => {
-        cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-        cursorCircle.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-      });
-
       // --- 3. Hero Background Parallax ---
       const heroBackground = document.querySelector('.hero-background');
       window.addEventListener('scroll', () => {
@@ -401,20 +371,6 @@
                 card.style.transform = 'translateY(30px)';
             });
         }
-      });
-      
-      // --- 5. Magnetic Links (Optional but cool) ---
-      const magneticLinks = document.querySelectorAll('.magnetic-link');
-      magneticLinks.forEach(link => {
-        link.addEventListener('mousemove', e => {
-          const rect = link.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          link.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-        });
-        link.addEventListener('mouseleave', () => {
-          link.style.transform = 'translate(0, 0)';
-        });
       });
 
     });

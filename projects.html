@@ -32,7 +32,7 @@
       overflow-x: hidden;
       position: relative;
       /* ✨ Hiding default cursor */
-      cursor: none;
+      cursor: auto;
     }
     
     /* --- ✨ NEW: Interactive Particle & Cursor Styles --- */
@@ -50,28 +50,6 @@
         z-index: 1000;
         pointer-events: none;
         transition: transform 0.1s ease;
-    }
-    .cursor-dot {
-        width: 6px;
-        height: 6px;
-        background-color: var(--accent-secondary);
-        border-radius: 50%;
-    }
-    .cursor-circle {
-        width: 30px;
-        height: 30px;
-        border: 1px solid var(--accent-secondary);
-        border-radius: 50%;
-        position: absolute;
-        top: -12px;
-        left: -12px;
-        transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
-    }
-    body:has(a:hover) .cursor-circle,
-    body:has(button:hover) .cursor-circle {
-        transform: scale(1.5);
-        opacity: 0.5;
-        border-color: #fff;
     }
     
     nav {
@@ -208,8 +186,6 @@
 <body>
 
   <div class="cursor">
-    <div class="cursor-dot"></div>
-    <div class="cursor-circle"></div>
   </div>
   <div id="particles-js"></div>
 
@@ -304,14 +280,6 @@
           "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
         },
         "retina_detect": true
-      });
-
-      // --- 2. Custom Cursor ---
-      const cursorDot = document.querySelector('.cursor-dot');
-      const cursorCircle = document.querySelector('.cursor-circle');
-      window.addEventListener('mousemove', e => {
-        cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-        cursorCircle.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       });
 
       // --- 3. Scroll-Triggered Animations ---
