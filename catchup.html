@@ -1,112 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catch Up — Arun Govind</title>
-  <meta name="description" content="Essays by Arun Govind on quantitative finance, optimization, and systems thinking.">
-  <meta name="theme-color" content="#06080d">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2306080d'/%3E%3Crect x='4' y='4' width='56' height='56' rx='9' fill='none' stroke='%236fd6e8' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='24' font-weight='600' fill='%236fd6e8' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catch Up | Arun Govind</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;640;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-start: #0c0a1a;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent-primary: #818cf8;
+      --accent-secondary: #c7d2fe;
+      --card-bg: rgba(29, 31, 58, 0.4);
+      --card-border: rgba(129, 140, 248, 0.2);
+      --shadow: rgba(0, 0, 0, 0.2);
+      --accent-glow: rgba(129, 140, 248, 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-start);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    /* ✨ MODIFIED: Particle background instead of CSS glow */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    
+    .animated-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .animated-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 1rem 1.5rem; text-align: center;
+      background: rgba(12, 10, 26, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    nav a {
+      margin: 0 1.25rem; color: var(--text-secondary);
+      text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+    nav a:hover { color: var(--accent-secondary); transform: translateY(-2px); }
+
+    header.page-header {
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+    }
+    header.page-header h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem); margin-bottom: 0.75rem;
+      font-weight: 700; letter-spacing: -1.5px; color: var(--accent-secondary);
+    }
+    header.page-header p {
+      font-size: clamp(1.1rem, 2.5vw, 1.2rem); color: var(--text-secondary);
+      max-width: 650px; margin: 0 auto;
+      font-style: italic;
+    }
+    
+    .hero-image-container {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1.5rem;
+    }
+    .hero-image-container img {
+        max-width: 100%;
+        width: 800px;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid var(--card-border);
+        box-shadow: 0 10px 40px var(--shadow);
+    }
+    
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .post-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px var(--shadow);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, border-color 0.4s ease-out, opacity 0.6s ease-out;
+    }
+    .post-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 15px 40px var(--shadow), 0 0 25px var(--accent-glow);
+        border-color: rgba(129, 140, 248, 0.6);
+    }
+    .post-card h3 { font-size: 1.5rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .post-card .date { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic; }
+    .post-card p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; }
+
+    #story-modal-container {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 200;
+        background-color: rgba(12, 10, 26, 0.85); backdrop-filter: blur(8px);
+        display: none; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.3s ease-in-out;
+    }
+    #story-modal-container.active { display: flex; }
+
+    .modal-content {
+        position: relative; background: var(--bg-start); border: 1px solid var(--card-border);
+        border-radius: 12px; padding: 2rem 2.5rem; width: 90%; max-width: 800px;
+        max-height: 85vh; overflow-y: auto;
+        transform: scale(0.95); transition: transform 0.3s ease-in-out;
+    }
+    .modal-content.visible { transform: scale(1); }
+    .modal-content h2 { color: var(--accent-secondary); font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .modal-content .date { color: var(--text-secondary); font-style: italic; margin-bottom: 1.5rem; }
+    .modal-content p { color: var(--text-primary); line-height: 1.7; font-size: 1.05rem; margin-bottom: 1em; }
+    .modal-content p:last-child { margin-bottom: 0; }
+    .modal-close-btn {
+        position: absolute; top: 10px; right: 20px; font-size: 2.5rem;
+        color: var(--text-secondary); cursor: pointer; transition: color 0.2s, transform 0.2s;
+    }
+    .modal-close-btn:hover { color: var(--text-primary); transform: scale(1.1); }
+    
+    footer { text-align: center; padding: 2.5rem 1.5rem; background-color: transparent; margin-top: 2rem; font-size: 0.9rem; color: #64748b; }
+    
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      nav a { margin: 0 0.5rem; font-size: 0.9rem; }
+      .modal-content { padding: 2rem 1.5rem; }
+      .modal-content h2 { font-size: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
+  <div id="particles-js"></div>
 
-<div id="progress"></div>
-<div class="paper" aria-hidden="true"></div>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="catchup.html">Catch Up</a>
+    <a href="mailto:arun.govind@rutgers.edu">Contact</a>
+  </nav>
 
-<nav class="top">
-  <div class="top-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">AG</span>
-      <span class="brand-name">Arun Govind<small>Quant · Dubai</small></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
-    <div class="nav-links" id="navlinks">
-      <a href="index.html">about</a>
-      <a href="experience.html">experience</a>
-      <a href="projects.html">projects</a>
-      <a href="catchup.html" class="active">catch-up</a>
-      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">contact</a>
+  <header class="page-header animated-section">
+    <h1>Catch Up</h1>
+    <p>それを発見して今幸せですか?</p>
+  </header>
+
+  <div class="hero-image-container animated-section">
+    <img src="grouppho.png" alt="Group photo">
+  </div>
+
+  <main>
+    <div class="post-card animated-section" 
+         data-title="Why the Next Financial Renaissance Will Be Quant-Driven"
+         data-date="May 20, 2025"
+         data-story="Financial markets are evolving rapidly, and the next era of finance will be defined not by narrative driven speculation but by disciplined, quant driven infrastructure. Across global markets, institutions are incrementally shifting from rule based strategies toward machine learning systems that offer stronger risk resilience. In May 2025, for example, AQR Capital managing over $130 billion reported that its Apex strategy yielded net returns of 11.4 % in the first half of the year, outperforming the S&P 500’s 5.3 % and marking a decisive transition toward AI infused models. The firm’s co-founder Cliff Asness described this shift as “surrendering more to the machines,” acknowledging that while some signals remain inscrutable, the improved performance and consistency justify embracing complexity.<br><br>Banks and regulators are watching closely. The UK’s Financial Policy Committee (FPC) has flagged systemic risks arising from the widespread use of similar AI based models. While these tools can increase efficiency and predictive power, they also risk inducing correlated trading behavior, amplifying market shocks during periods of stress. The Bank of England’s 2025 “Financial Stability in Focus” report warns that AI-induced herding or model concentration could inadvertently spawn flash crashes or amplify volatility echoing concerns that mirror the 2008 crisis when common risk models masked systemic exposure. The takeaway is clear: models must not only predict well they must be designed to explain and adapt to unexpected shocks.<br><br>This emphasis on explainable AI (XAI) is not academic. Financial institutions are under growing pressure to build models that can articulate “why” they made a prediction not merely “what” prediction they made. Tools such as SHAP, LIME, or attention based explainability layers offer narrative insight into ML driven predictions. In 2025, a research survey confirmed these techniques are increasingly mandatory in regulated fields like credit scoring and algorithmic trading. Regulatory frameworks such as the EU AI Act and evolving bank-specific mandates demand audit trails for decision logic, model data lineage, and retraining transparency.<br><br>Still, skepticism persists. Critics counter that ML models trained on recent data may capture momentum artifacts rather than true signal. Stefan Nagel of Chicago pointed out that some high performing models replicate historical bias rather than generating predictive insight. Even so, proponents argue that complexity properly regularized and interpretable is more potent than overly simplistic architectures. AQR research supports this view: complex ML models often outperform simpler factor regressions when calibrated correctly, confirming that “complexity has predictive virtue”.<br><br>Beyond performance, quant frameworks are now being used to manage systemic risk through model diversification, tail risk scenario design, and real time exposure dashboards. Surveys show that even as risk confidence declines among financial firms, awareness of structural fragility is rising highlighting the need for proactive risk analytics rather than reactive firefighting.<br><br>In regions like GCC and Middle East, firms are waking up to the dual imperative of compliance and resilience. UAE regulators—via the Central Bank of the UAE and Securities and Commodities Authority are looking to adopt similar principles, encouraging explainable, auditable models for credit, investment, and liquidity frameworks. Open source quant tools, including ARIMA-GARCH, vine copula tail risk simulators, and CVaR based portfolio optimization, are accessible and increasingly adopted by smaller players building resilient analytics pipelines.<br><br>At its core, this transformation is about building systems that endure. Financial institutions that rely on quant infrastructure rather than discretionary bets can codify risk policies, monitor exposure thresholds, and deploy model backed triggers. For example, tail risk estimators built on vine copulas or Monte Carlo stress frameworks now underlie margin calls, capital buffers, and scenario planning across top quant desks.<br><br>This also allows alignment with “macro-prudential” oversight. If multiple institutions rely on homogeneous AI models, they may react similarly during stress, causing systemic amplification. The BoE explicitly highlighted this risk, and has stressed that monitoring model homogeneity and vendor concentration is critical to maintaining financial stability. Institutions that embed diversity of signal sources and guardrails into their pipelines reduce not just firm level risk—but systemic vulnerability.<br><br>While alpha remains valuable, the competitive edges of tomorrow will be built around governance. In the near future, major investors, trustees, and regulatory bodies will require model explanations, stress testing audit trails, and control dashboards not just performance charts. Firms and nations that embed XAI, reproducible pipelines, interactive dashboards, and deployment metrics into their quant frameworks will lead the next financial renaissance.<br><br>Finally, this isn’t about theory it’s about capability. Quant professionals who can bridge data engineering, statistical modeling, explainability tooling, and automation will command premium roles in investment management, risk control, and financial regulation. The firms that invest in this talent pool and infrastructure today will shape how capital is allocated and risks managed tomorrow.<br><br>In short: the next financial renaissance won’t be powered by opaque speculation or heuristics. It will be driven by quantitative systems designed to predict, explain, and endure. For financial institutions, regulators, and technologists, the opportunity is to build models that are not adversaries of uncertainty and not just blackboxes for alpha but interpretable engines of risk informed insight.">
+      <h3>Why the Next Financial Renaissance Will Be Quant Driven</h3>
+      <div class="date">May 20, 2025</div>
+      <p>The future of financial systems lies in data, math, and interpretability. Here's how I see quant research disrupting how nations and firms hedge uncertainty...</p>
+    </div>
+
+    <div class="post-card animated-section"
+         data-title="My Top 5 Lessons from Building an NSGA-II Portfolio Optimizer"
+         data-date="May 16, 2025"
+         data-story="Building an NSGA-II portfolio optimizer from scratch was as much an exercise in self discipline as it was in coding. It started with the deceptively simple question: how do you define “optimal” when there are competing objectives? In classical portfolio theory, Harry Markowitz gave us the mean-variance frontier with a clean, single objective optimization. But in reality, a portfolio manager often wants more than just high returns and low volatility. Liquidity constraints, turnover minimization, diversification mandates, even ESG scores, all these creep into the decision space. NSGA-II, with its ability to evolve a population of solutions toward a Pareto front, felt like the right tool for that messy reality.<br><br>What I didn’t anticipate was that most of the challenge wasn’t in the algorithm itself, but in the preparation that led up to it. The data cleaning stage consumed more than half of the entire build. Return series for different assets came with gaps, non-trading days, corporate action adjustments, and currency conversion quirks. Without this meticulous preprocessing, the optimizer’s “best” solutions were meaningless. It’s an old truth in a new setting: garbage in, garbage out. Only after I could trust the input matrix — with aligned timestamps, adjusted close prices, and consistent return definitions, did I feel ready to let the evolutionary process run.<br><br>Defining the objectives turned out to be the next philosophical hurdle. Maximizing expected return and minimizing volatility are easy to agree on, but adding more nuanced objectives, like minimizing downside semi-deviation or reducing transaction costs, required judgment calls. Each added objective shifts the shape of the Pareto front and forces trade-offs that aren’t always intuitive. In some trial runs, portfolios with superior risk adjusted returns underperformed in liquidity stress scenarios. In others, solutions that looked mediocre on paper proved more robust under simulated market shocks. That was my first big takeaway: your definition of “good” is as important as your optimization engine.<br><br>Visualization became my compass. Plotting the Pareto front in real time, sometimes in two dimensions (return vs. volatility), sometimes three (adding turnover or CVaR), let me see if the algorithm was converging or drifting aimlessly. The NSGA-II's crowding-distance mechanism helps preserve diversity, but without visuals, it’s easy to miss when the population is collapsing into a suboptimal cluster. More than once, a quick scatterplot exposed a coding bug or a hyperparameter setting that was prematurely killing exploration.<br><br>Speaking of hyperparameters, NSGA-II forces you to confront the weight of your own choices. Population size, number of generations, crossover and mutation rates, these aren’t just knobs to twist; they define how much of the search space you can realistically cover before computation time becomes impractical. A population too small loses diversity and gets stuck; too large, and you drown in processing cycles with diminishing returns. I found myself running multiple configurations overnight and comparing convergence patterns in the morning, a process that made me appreciate why production-grade optimizers often use adaptive parameters.<br><br>And then there’s the “knee”  that sweet spot on the Pareto front where a small sacrifice in one objective yields a disproportionate gain in another. In practice, finding this point algorithmically is a challenge. I experimented with curvature based detection methods and distance-from-ideal-metric approaches, and while none were perfect, they often highlighted portfolios I would have chosen intuitively. It reaffirmed something I’ve seen in real portfolio reviews: the best choice isn’t always the one with the top score on any single metric, but the one that balances competing demands with elegance.<br><br>Looking back, the NSGA-II project wasn’t just about producing an optimizer; it was about learning to navigate the messy middle ground between mathematical purity and practical constraints. The experience left me with a deeper respect for multi objective optimization in finance not because it gives you one “right” answer, but because it forces you to engage with the fact that there rarely is one. And in a world where markets are complex, noisy, and multi-faceted, that might be the most valuable lesson of all.">
+      <h3>My Top 5 Lessons from Building an NSGA-II Portfolio Optimizer</h3>
+      <div class="date">May 16, 2025</div>
+      <p>From coding headaches to discovering robust frontier shifts, this project reshaped how I think about multi-objective optimization in real-world asset management...</p>
+    </div>
+
+    <div class="post-card animated-section"
+         data-title="Chess, Code & Control Systems: How Schooling Shaped My Intuition"
+         data-date="May 12, 2025"
+         data-story="Looking back, it’s clear that my schooling didn’t just teach me subjects, it wired my mind for systems thinking. The seeds were planted in two very different arenas: chess boards in school corridors and control systems labs in engineering class. On the surface, they couldn’t be more different. But both were teaching me the same lesson: every move exists in a loop of cause and effect, and mastery comes from managing that loop.<br><br>In chess, you act with incomplete information. You make a move, watch your opponent respond, and adapt. It’s not just about knowing theory; it’s about reading the position as it evolves and making micro-adjustments without losing sight of the bigger plan. In control systems engineering, the game is similar, you set a target, measure the output, and correct for deviations. That’s how thermostats maintain room temperature, how cruise control keeps a car steady, and how autopilots fly planes.<br><br>The parallel hit me later in life when I began working in quantitative finance. A trading algorithm is essentially a control system wired into the markets. You feed in capital and parameters (the input), monitor live market conditions (the feedback), and adjust positions when reality drifts from expectation. A well-built strategy isn’t static; it evolves with its environment, just as a chess player adjusts to their opponent’s style.<br><br>The markets of today demand this adaptability more than ever. We’re in a world where macro news can shift sentiment in minutes, liquidity shocks can ripple across asset classes in seconds, and AI driven trading bots react before human traders even see the headline. Look at March 2023, when the collapse of Silicon Valley Bank set off a chain reaction, US bank stocks tanked, credit spreads widened, and volatility spiked across European markets within hours. No static strategy could survive that unchanged; only feedback driven systems, constantly re-evaluating their exposure, could navigate it without blowing up.<br><br>This is why my work at Rutgers focused so heavily on dynamic rebalancing. In one project, I integrated macroeconomic triggers like CPI releases and FOMC statements directly into my portfolio execution logic. The goal wasn’t just to predict market moves, but to adapt when my forecast was wrong, to recognize changing regimes and pivot fast. The results were clear: avoiding just a handful of high volatility events preserved more capital than squeezing out a fraction of extra return on a good day.<br><br>The truth is, “perfect plans” are a myth. Chess teaches you that. You might spend 15 moves executing a beautiful strategy, only to have it collapse because your opponent found a line you didn’t see. In markets, it’s the same. Models degrade. Data distributions shift. Anomalies happen. The best strategies aren’t the ones that guess right every time, they’re the ones built to recover quickly when they guess wrong.<br><br>That’s why I put such emphasis on instrumentation and feedback in my systems. Whether it’s a trading dashboard flashing a deviation in expected risk exposure, or a backtest revealing that turnover has jumped 40% from historical norms, these are the signals that tell you when to act. Without them, you’re just playing blindfolded chess,  and in both markets and control systems, that’s a losing game.<br><br>When I reflect on it, the throughline from school to career is obvious. Chess taught me anticipation and adaptability. Engineering taught me structure and precision. Both drilled into me the understanding that the environment will always change and that your survival depends on how quickly and effectively you respond.<br><br>In quantitative finance, as in life, the board is never static. The game doesn’t reward the one who plans the most, but the one who senses change earliest and adapts without hesitation. That’s the kind of thinking I carry into every model I build, every risk I manage, and every market I trade.<br><br>Because whether it’s a pawn on e4, a temperature gauge reading, or an equity position flashing red, the principle is the same: the feedback loop is your greatest ally.">
+      <h3>Chess, Code & Control Systems</h3>
+      <div class="date">May 12, 2025</div>
+      <p>Growing up gave me more than discipline—it gave me clarity. Here's why I think every quant should have a systems engineering mindset...</p>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Arun Govind. All rights reserved.
+  </footer>
+
+  <div id="story-modal-container">
+    <div class="modal-content">
+      <div class="modal-close-btn">×</div>
+      <h2 id="modal-title"></h2>
+      <div id="modal-date" class="date"></div>
+      <p id="modal-story"></p>
     </div>
   </div>
-</nav>
 
-<main style="padding-top:1rem">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-  <section class="reveal" style="border-bottom:none">
-    <p class="tick"><span class="idx">/</span> catch-up</p>
-    <h2 class="d2" style="margin-bottom:1.4rem">Notes between <span class="hi">model runs.</span></h2>
-    <p class="essay-epigraph">それを発見して今幸せですか?</p>
-    <details class="post panel" open>
-      <summary>
-        <span class="post-date">May 20, 2025</span>
-        <span class="post-title">Why the Next Financial Renaissance Will Be Quant-Driven</span>
-        <span class="post-caret" aria-hidden="true">+</span>
-      </summary>
-      <div class="essay post-body">
-        <p>Financial markets are evolving rapidly, and the next era of finance will be defined not by narrative driven speculation but by disciplined, quant driven infrastructure. Across global markets, institutions are incrementally shifting from rule based strategies toward machine learning systems that offer stronger risk resilience. In May 2025, for example, AQR Capital managing over $130 billion reported that its Apex strategy yielded net returns of 11.4 % in the first half of the year, outperforming the S&P 500’s 5.3 % and marking a decisive transition toward AI infused models. The firm’s co-founder Cliff Asness described this shift as “surrendering more to the machines,” acknowledging that while some signals remain inscrutable, the improved performance and consistency justify embracing complexity.</p>
-        <p>Banks and regulators are watching closely. The UK’s Financial Policy Committee (FPC) has flagged systemic risks arising from the widespread use of similar AI based models. While these tools can increase efficiency and predictive power, they also risk inducing correlated trading behavior, amplifying market shocks during periods of stress. The Bank of England’s 2025 “Financial Stability in Focus” report warns that AI-induced herding or model concentration could inadvertently spawn flash crashes or amplify volatility echoing concerns that mirror the 2008 crisis when common risk models masked systemic exposure. The takeaway is clear: models must not only predict well they must be designed to explain and adapt to unexpected shocks.</p>
-        <p>This emphasis on explainable AI (XAI) is not academic. Financial institutions are under growing pressure to build models that can articulate “why” they made a prediction not merely “what” prediction they made. Tools such as SHAP, LIME, or attention based explainability layers offer narrative insight into ML driven predictions. In 2025, a research survey confirmed these techniques are increasingly mandatory in regulated fields like credit scoring and algorithmic trading. Regulatory frameworks such as the EU AI Act and evolving bank-specific mandates demand audit trails for decision logic, model data lineage, and retraining transparency.</p>
-        <p>Still, skepticism persists. Critics counter that ML models trained on recent data may capture momentum artifacts rather than true signal. Stefan Nagel of Chicago pointed out that some high performing models replicate historical bias rather than generating predictive insight. Even so, proponents argue that complexity properly regularized and interpretable is more potent than overly simplistic architectures. AQR research supports this view: complex ML models often outperform simpler factor regressions when calibrated correctly, confirming that “complexity has predictive virtue”.</p>
-        <p>Beyond performance, quant frameworks are now being used to manage systemic risk through model diversification, tail risk scenario design, and real time exposure dashboards. Surveys show that even as risk confidence declines among financial firms, awareness of structural fragility is rising highlighting the need for proactive risk analytics rather than reactive firefighting.</p>
-        <p>In regions like GCC and Middle East, firms are waking up to the dual imperative of compliance and resilience. UAE regulators—via the Central Bank of the UAE and Securities and Commodities Authority are looking to adopt similar principles, encouraging explainable, auditable models for credit, investment, and liquidity frameworks. Open source quant tools, including ARIMA-GARCH, vine copula tail risk simulators, and CVaR based portfolio optimization, are accessible and increasingly adopted by smaller players building resilient analytics pipelines.</p>
-        <p>At its core, this transformation is about building systems that endure. Financial institutions that rely on quant infrastructure rather than discretionary bets can codify risk policies, monitor exposure thresholds, and deploy model backed triggers. For example, tail risk estimators built on vine copulas or Monte Carlo stress frameworks now underlie margin calls, capital buffers, and scenario planning across top quant desks.</p>
-        <p>This also allows alignment with “macro-prudential” oversight. If multiple institutions rely on homogeneous AI models, they may react similarly during stress, causing systemic amplification. The BoE explicitly highlighted this risk, and has stressed that monitoring model homogeneity and vendor concentration is critical to maintaining financial stability. Institutions that embed diversity of signal sources and guardrails into their pipelines reduce not just firm level risk—but systemic vulnerability.</p>
-        <p>While alpha remains valuable, the competitive edges of tomorrow will be built around governance. In the near future, major investors, trustees, and regulatory bodies will require model explanations, stress testing audit trails, and control dashboards not just performance charts. Firms and nations that embed XAI, reproducible pipelines, interactive dashboards, and deployment metrics into their quant frameworks will lead the next financial renaissance.</p>
-        <p>Finally, this isn’t about theory it’s about capability. Quant professionals who can bridge data engineering, statistical modeling, explainability tooling, and automation will command premium roles in investment management, risk control, and financial regulation. The firms that invest in this talent pool and infrastructure today will shape how capital is allocated and risks managed tomorrow.</p>
-        <p>In short: the next financial renaissance won’t be powered by opaque speculation or heuristics. It will be driven by quantitative systems designed to predict, explain, and endure. For financial institutions, regulators, and technologists, the opportunity is to build models that are not adversaries of uncertainty and not just blackboxes for alpha but interpretable engines of risk informed insight.</p>
-      </div>
-    </details>
-    <details class="post panel">
-      <summary>
-        <span class="post-date">May 16, 2025</span>
-        <span class="post-title">My Top 5 Lessons from Building an NSGA-II Portfolio Optimizer</span>
-        <span class="post-caret" aria-hidden="true">+</span>
-      </summary>
-      <div class="essay post-body">
-        <p>Building an NSGA-II portfolio optimizer from scratch was as much an exercise in self discipline as it was in coding. It started with the deceptively simple question: how do you define “optimal” when there are competing objectives? In classical portfolio theory, Harry Markowitz gave us the mean-variance frontier with a clean, single objective optimization. But in reality, a portfolio manager often wants more than just high returns and low volatility. Liquidity constraints, turnover minimization, diversification mandates, even ESG scores, all these creep into the decision space. NSGA-II, with its ability to evolve a population of solutions toward a Pareto front, felt like the right tool for that messy reality.</p>
-        <p>What I didn’t anticipate was that most of the challenge wasn’t in the algorithm itself, but in the preparation that led up to it. The data cleaning stage consumed more than half of the entire build. Return series for different assets came with gaps, non-trading days, corporate action adjustments, and currency conversion quirks. Without this meticulous preprocessing, the optimizer’s “best” solutions were meaningless. It’s an old truth in a new setting: garbage in, garbage out. Only after I could trust the input matrix — with aligned timestamps, adjusted close prices, and consistent return definitions, did I feel ready to let the evolutionary process run.</p>
-        <p>Defining the objectives turned out to be the next philosophical hurdle. Maximizing expected return and minimizing volatility are easy to agree on, but adding more nuanced objectives, like minimizing downside semi-deviation or reducing transaction costs, required judgment calls. Each added objective shifts the shape of the Pareto front and forces trade-offs that aren’t always intuitive. In some trial runs, portfolios with superior risk adjusted returns underperformed in liquidity stress scenarios. In others, solutions that looked mediocre on paper proved more robust under simulated market shocks. That was my first big takeaway: your definition of “good” is as important as your optimization engine.</p>
-        <p>Visualization became my compass. Plotting the Pareto front in real time, sometimes in two dimensions (return vs. volatility), sometimes three (adding turnover or CVaR), let me see if the algorithm was converging or drifting aimlessly. The NSGA-II's crowding-distance mechanism helps preserve diversity, but without visuals, it’s easy to miss when the population is collapsing into a suboptimal cluster. More than once, a quick scatterplot exposed a coding bug or a hyperparameter setting that was prematurely killing exploration.</p>
-        <p>Speaking of hyperparameters, NSGA-II forces you to confront the weight of your own choices. Population size, number of generations, crossover and mutation rates, these aren’t just knobs to twist; they define how much of the search space you can realistically cover before computation time becomes impractical. A population too small loses diversity and gets stuck; too large, and you drown in processing cycles with diminishing returns. I found myself running multiple configurations overnight and comparing convergence patterns in the morning, a process that made me appreciate why production-grade optimizers often use adaptive parameters.</p>
-        <p>And then there’s the “knee”  that sweet spot on the Pareto front where a small sacrifice in one objective yields a disproportionate gain in another. In practice, finding this point algorithmically is a challenge. I experimented with curvature based detection methods and distance-from-ideal-metric approaches, and while none were perfect, they often highlighted portfolios I would have chosen intuitively. It reaffirmed something I’ve seen in real portfolio reviews: the best choice isn’t always the one with the top score on any single metric, but the one that balances competing demands with elegance.</p>
-        <p>Looking back, the NSGA-II project wasn’t just about producing an optimizer; it was about learning to navigate the messy middle ground between mathematical purity and practical constraints. The experience left me with a deeper respect for multi objective optimization in finance not because it gives you one “right” answer, but because it forces you to engage with the fact that there rarely is one. And in a world where markets are complex, noisy, and multi-faceted, that might be the most valuable lesson of all.</p>
-      </div>
-    </details>
-    <details class="post panel">
-      <summary>
-        <span class="post-date">May 12, 2025</span>
-        <span class="post-title">Chess, Code & Control Systems: How Schooling Shaped My Intuition</span>
-        <span class="post-caret" aria-hidden="true">+</span>
-      </summary>
-      <div class="essay post-body">
-        <p>Looking back, it’s clear that my schooling didn’t just teach me subjects, it wired my mind for systems thinking. The seeds were planted in two very different arenas: chess boards in school corridors and control systems labs in engineering class. On the surface, they couldn’t be more different. But both were teaching me the same lesson: every move exists in a loop of cause and effect, and mastery comes from managing that loop.</p>
-        <p>In chess, you act with incomplete information. You make a move, watch your opponent respond, and adapt. It’s not just about knowing theory; it’s about reading the position as it evolves and making micro-adjustments without losing sight of the bigger plan. In control systems engineering, the game is similar, you set a target, measure the output, and correct for deviations. That’s how thermostats maintain room temperature, how cruise control keeps a car steady, and how autopilots fly planes.</p>
-        <p>The parallel hit me later in life when I began working in quantitative finance. A trading algorithm is essentially a control system wired into the markets. You feed in capital and parameters (the input), monitor live market conditions (the feedback), and adjust positions when reality drifts from expectation. A well-built strategy isn’t static; it evolves with its environment, just as a chess player adjusts to their opponent’s style.</p>
-        <p>The markets of today demand this adaptability more than ever. We’re in a world where macro news can shift sentiment in minutes, liquidity shocks can ripple across asset classes in seconds, and AI driven trading bots react before human traders even see the headline. Look at March 2023, when the collapse of Silicon Valley Bank set off a chain reaction, US bank stocks tanked, credit spreads widened, and volatility spiked across European markets within hours. No static strategy could survive that unchanged; only feedback driven systems, constantly re-evaluating their exposure, could navigate it without blowing up.</p>
-        <p>This is why my work at Rutgers focused so heavily on dynamic rebalancing. In one project, I integrated macroeconomic triggers like CPI releases and FOMC statements directly into my portfolio execution logic. The goal wasn’t just to predict market moves, but to adapt when my forecast was wrong, to recognize changing regimes and pivot fast. The results were clear: avoiding just a handful of high volatility events preserved more capital than squeezing out a fraction of extra return on a good day.</p>
-        <p>The truth is, “perfect plans” are a myth. Chess teaches you that. You might spend 15 moves executing a beautiful strategy, only to have it collapse because your opponent found a line you didn’t see. In markets, it’s the same. Models degrade. Data distributions shift. Anomalies happen. The best strategies aren’t the ones that guess right every time, they’re the ones built to recover quickly when they guess wrong.</p>
-        <p>That’s why I put such emphasis on instrumentation and feedback in my systems. Whether it’s a trading dashboard flashing a deviation in expected risk exposure, or a backtest revealing that turnover has jumped 40% from historical norms, these are the signals that tell you when to act. Without them, you’re just playing blindfolded chess,  and in both markets and control systems, that’s a losing game.</p>
-        <p>When I reflect on it, the throughline from school to career is obvious. Chess taught me anticipation and adaptability. Engineering taught me structure and precision. Both drilled into me the understanding that the environment will always change and that your survival depends on how quickly and effectively you respond.</p>
-        <p>In quantitative finance, as in life, the board is never static. The game doesn’t reward the one who plans the most, but the one who senses change earliest and adapts without hesitation. That’s the kind of thinking I carry into every model I build, every risk I manage, and every market I trade.</p>
-        <p>Because whether it’s a pawn on e4, a temperature gauge reading, or an equity position flashing red, the principle is the same: the feedback loop is your greatest ally.</p>
-      </div>
-    </details>
-  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // --- 1. Particle Background ---
+      particlesJS("particles-js", {
+        "particles": {
+          "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+          "color": { "value": "#818cf8" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.4, "random": true },
+          "size": { "value": 3, "random": true },
+          "line_linked": { "enable": true, "distance": 150, "color": "#94a3b8", "opacity": 0.2, "width": 1 },
+          "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+          "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+        },
+        "retina_detect": true
+      });
 
-</main>
+      // --- 2. Scroll-Triggered Animations ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
 
-<footer>
-  <div class="foot-inner">
-    <span>© 2026 Arun Govind</span>
-    <span>Dubai · United Arab Emirates</span>
-    <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
-  </div>
-</footer>
+      const animatedElements = document.querySelectorAll('.animated-section');
+      animatedElements.forEach((el, index) => {
+          // Add a staggered delay to each observed element
+          el.style.transitionDelay = `${index * 150}ms`;
+          observer.observe(el);
+      });
 
-<script src="js/site.js"></script>
+      // --- 3. Modal Logic ---
+      const modalContainer = document.getElementById('story-modal-container');
+      const modalContent = document.querySelector('.modal-content');
+      const closeBtn = document.querySelector('.modal-close-btn');
+      const postCards = document.querySelectorAll('.post-card');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDate = document.getElementById('modal-date');
+      const modalStory = document.getElementById('modal-story');
+      
+      function openModal(card) {
+          modalContainer.style.display = 'flex';
+          setTimeout(() => {
+            modalContainer.style.opacity = '1';
+            modalContent.classList.add('visible');
+          }, 10);
+          document.body.classList.add('modal-open');
+          
+          const title = card.getAttribute('data-title');
+          const date = card.getAttribute('data-date');
+          const story = card.getAttribute('data-story');
+          
+          modalTitle.textContent = title;
+          modalDate.textContent = date;
+          modalStory.innerHTML = story;
+      }
+
+      function closeModal() {
+          modalContent.classList.remove('visible');
+          modalContainer.style.opacity = '0';
+          setTimeout(() => {
+              modalContainer.style.display = 'none';
+              document.body.classList.remove('modal-open');
+          }, 300);
+      }
+
+      postCards.forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modalContainer.addEventListener('click', (event) => {
+        if (event.target === modalContainer) closeModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModal();
+      });
+
+    });
+  </script>
+
 </body>
 </html>

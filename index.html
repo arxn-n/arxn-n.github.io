@@ -1,221 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arun Govind — Quantitative Researcher &amp; Developer</title>
-  <meta name="description" content="Arun Govind — quantitative researcher and developer in Dubai. Portfolio optimization, risk engineering, production analytics. MQF, Rutgers.">
-  <meta name="theme-color" content="#06080d">
-  <meta property="og:title" content="Arun Govind — Structure in uncertainty">
-  <meta property="og:description" content="Quantitative researcher &amp; developer. Portfolio optimization, risk engineering, production analytics.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2306080d'/%3E%3Crect x='4' y='4' width='56' height='56' rx='9' fill='none' stroke='%236fd6e8' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='24' font-weight='600' fill='%236fd6e8' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Arun Govind</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;640;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-start:#0c0a1a; --bg-end:#1c163a;
+      --text-primary:#e2e8f0; --text-secondary:#94a3b8;
+      --accent-primary:#818cf8; --accent-secondary:#c7d2fe;
+      --card-bg:rgba(29,31,58,.4); --card-border:rgba(129,140,248,.2);
+      --shadow:rgba(0,0,0,.2);
+      --glow-start:rgba(79,70,229,.4); --glow-end:rgba(167,139,250,0);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:'Inter',sans-serif;
+      background-color:var(--bg-start);
+      color:var(--text-primary);
+      overflow-x:hidden;
+      position:relative;
+      /* ✨ Hiding the default cursor */
+      cursor: none;
+    }
+    /* --- ✨ NEW: Interactive Particle Background --- */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    /* --- ✨ NEW: Custom Cursor Styles --- */
+    .cursor {
+        position: fixed;
+        z-index: 1000;
+        pointer-events: none;
+        transition: transform 0.1s ease;
+    }
+    .cursor-dot {
+        width: 6px;
+        height: 6px;
+        background-color: var(--accent-secondary);
+        border-radius: 50%;
+    }
+    .cursor-circle {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--accent-secondary);
+        border-radius: 50%;
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    /* Cursor hover effects */
+    body:has(a:hover) .cursor-circle {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    /* Animation Keyframes */
+    @keyframes slide-up-fade-in {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes char-slide-in {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+
+    nav{
+      position:sticky; top:0; z-index:100;
+      padding:1rem 1.5rem; text-align:center;
+      background:rgba(12,10,26,.7);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--card-border);
+    }
+    nav a{
+      margin:0 1.25rem; color:var(--text-secondary); text-decoration:none;
+      font-weight:500; font-size:.95rem; display:inline-block;
+      transition:color .3s ease, transform .3s ease;
+    }
+    nav a:hover{ color:var(--accent-secondary); transform:translateY(-2px) }
+
+    /* Hero Section */
+    header.hero{
+      position:relative; min-height:50vh;
+      display:flex; align-items:center; justify-content:center;
+      padding:4rem 1.5rem; overflow:hidden;
+    }
+    .hero-background{
+      position:absolute; inset:0;
+      background-image:url('RBSone.png'); background-size:cover; background-position:50% 30%;
+      filter:blur(5px) brightness(.6); transform:scale(1.15); z-index:0;
+      /* Transition for parallax effect */
+      transition: transform 0.2s linear;
+    }
+    .hero-content{
+      position:relative; z-index:2; max-width:980px; width:100%; padding:0 1rem;
+    }
+    .hero-row{
+      display:flex; align-items:center; justify-content:center; gap:2rem;
+    }
+    .hero-avatar{
+      width:140px; height:140px; border-radius:50%; object-fit:cover; object-position:center;
+      border:3px solid rgba(255,255,255,.7); box-shadow:0 10px 30px rgba(0,0,0,.4);
+      flex-shrink:0;
+      opacity: 0;
+      animation: slide-up-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+    .hero-text{ text-align:left; max-width:720px }
+    .hero-text h1 {
+        margin:0 0 .6rem;
+        font-size:clamp(2.8rem, 6vw, 4rem);
+        font-weight:700; letter-spacing:-1.5px;
+        color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,.5);
+    }
+    .hero-text h1 .char { display: inline-block; overflow: hidden; }
+    .hero-text h1 .char span {
+        display: inline-block;
+        transform: translateY(110%);
+        animation: char-slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-text h1 .char:nth-child(1) span { animation-delay: 0.1s; }
+    .hero-text h1 .char:nth-child(2) span { animation-delay: 0.15s; }
+    .hero-text h1 .char:nth-child(3) span { animation-delay: 0.2s; }
+    .hero-text h1 .char:nth-child(4) span { animation-delay: 0.25s; }
+    .hero-text h1 .char:nth-child(5) span { animation-delay: 0.3s; }
+    .hero-text h1 .char:nth-child(6) span { animation-delay: 0.35s; }
+    .hero-text h1 .char:nth-child(7) span { animation-delay: 0.4s; }
+    .hero-text h1 .char:nth-child(8) span { animation-delay: 0.45s; }
+    .hero-text h1 .char:nth-child(9) span { animation-delay: 0.5s; }
+    .hero-text h1 .char:nth-child(10) span { animation-delay: 0.55s; }
+    
+    .hero-text p, .hero-links {
+        opacity: 0;
+        animation: slide-up-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-text p {
+      font-size:clamp(1rem,2.5vw,1.15rem); color:var(--accent-secondary); margin-bottom:1.5rem;
+      animation-delay: 0.9s;
+    }
+    .hero-links { animation-delay: 1.1s; }
+    .hero-links a{
+      color:var(--accent-secondary); text-decoration:none; margin:0 .75rem 0 0;
+      transition: color 0.3s ease;
+    }
+    .hero-links a:hover{ color:#fff }
+
+    main{ max-width:950px; margin:0 auto; padding:2rem 1.5rem }
+    /* ✨ NEW: Adding animation to sections */
+    section {
+      margin-bottom:4rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h2{
+      font-size:2rem; font-weight:700; color:var(--accent-secondary);
+      margin-bottom:2rem; padding-bottom:.75rem; border-bottom:1px solid var(--card-border);
+      display:flex; align-items:center; gap:.8rem;
+    }
+    h2::before{ content:'🎓'; font-size:1.5rem }
+    #about h2::before{ content:'👋' }
+
+    #about p{ font-size:1.1rem; line-height:1.7; color:var(--text-secondary); margin-bottom:1.25rem }
+    #about p:last-child{ margin-bottom:0 }
+
+    .edu-grid{ display:grid; grid-template-columns:1fr; gap:1.5rem }
+    .edu-entry{
+      background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px;
+      padding:1.5rem; display:flex; gap:1.5rem; align-items:flex-start;
+      box-shadow:0 4px 20px var(--shadow); backdrop-filter:blur(5px);
+      transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .edu-entry:hover{
+      transform:translateY(-8px) scale(1.02);
+      box-shadow:0 12px 35px var(--shadow);
+      border-color:rgba(129,140,248,.5);
+    }
+    .edu-logo{ flex-shrink:0; width:60px; height:60px; object-fit:contain; border-radius:8px; background:rgba(12,10,26,.5); padding:8px }
+    .edu-details{ flex-grow:1 }
+    .edu-header{ display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; margin-bottom:.5rem }
+    .edu-header h3{ font-size:1.15rem; font-weight:500; color:var(--text-primary) }
+    .edu-date{ font-size:.9rem; color:var(--text-secondary); white-space:nowrap; padding-top:2px }
+    .edu-entry p{ font-size:.95rem; color:var(--text-secondary); line-height:1.6 }
+
+    footer{ text-align:center; padding:2.5rem 1.5rem; background:transparent; margin-top:2rem; font-size:.9rem; color:#64748b }
+
+    /* Responsive adjustments */
+    @media (max-width:680px){
+      .hero-row{ flex-direction:column; text-align:center }
+      .hero-text{ text-align:center; max-width:100% }
+      .hero-avatar{ width:120px; height:120px }
+    }
+    @media (max-width:768px){
+      .edu-header{ flex-direction:column; align-items:flex-start; gap:.25rem }
+    }
+    @media (max-width:640px){
+      nav{ padding:1rem }
+      nav a{ margin:0 .5rem; font-size:.9rem }
+      header.hero{ min-height:45vh }
+      .edu-entry{ flex-direction:column; align-items:flex-start; gap:1rem }
+      /* Hide custom cursor on mobile for better experience */
+      .cursor { display: none; }
+      body { cursor: auto; }
+    }
+  </style>
 </head>
+
 <body>
-
-<div id="progress"></div>
-<div class="paper" aria-hidden="true"></div>
-
-<nav class="top">
-  <div class="top-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">AG</span>
-      <span class="brand-name">Arun Govind<small>Quant · Dubai</small></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
-    <div class="nav-links" id="navlinks">
-      <a href="index.html" class="active">about</a>
-      <a href="experience.html">experience</a>
-      <a href="projects.html">projects</a>
-      <a href="catchup.html">catch-up</a>
-      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">contact</a>
-    </div>
+  <!-- ✨ NEW: Custom Cursor and Particle Background Elements -->
+  <div class="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
   </div>
-</nav>
+  <div id="particles-js"></div>
 
-<header class="hero">
-  <canvas id="frontier" aria-hidden="true"></canvas>
-  <span class="hero-axis-y">E[r] — expected return</span>
-  <span class="hero-axis-x">σ — risk</span>
-  <div class="legend-chip" aria-hidden="true">
-    <i><span class="sw" style="background:#6fd6e8"></span>efficient frontier</i><br>
-    <i><span class="sw" style="background:rgba(111,214,232,.35);height:6px;border-radius:3px"></span>10,000 simulated portfolios</i><br>
-    <i><span class="sw" style="background:#e8b45e"></span>max Sharpe · 1.47</i>
-  </div>
-  <div class="hero-inner">
-    <p class="hero-kicker"><span class="live">quantitative researcher &amp; developer</span> <span>·</span> <span>Dubai, UAE</span> <span>·</span> <span>MQF Rutgers</span></p>
-    <h1 class="d1">Structure in <span class="hi">uncertainty.</span></h1>
-    <p class="hero-sub">
-      I'm <strong>Arun Govind</strong>. Five years turning noise into decisions — portfolio
-      optimization, risk engineering, and production analytics, from the model to the machine it
-      runs on.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:arungovindmangalath@gmail.com">get in touch</a>
-      <a class="btn btn-amber" href="projects.html">see the work</a>
-      <a class="btn btn-ghost" href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/arun-govind-19849261" target="_blank" rel="noopener noreferrer">linkedin</a>
-    </div>
-  </div>
-</header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="catchup.html">Catch Up</a>
+    <a href="mailto:arungovindmangalath@gmail.com">Contact</a>
+  </nav>
 
-<div class="readout" aria-label="Key results">
-  <div class="readout-inner">
-    <div class="cell"><b>1.47</b><span>Sharpe · $1M simulated book</span></div>
-    <div class="cell"><b>+142 bps</b><span>NSGA-II uplift vs benchmark</span></div>
-    <div class="cell"><b>−45%</b><span>turnover variance, MC stabilized</span></div>
-    <div class="cell gold"><b>9,500</b><span>lines of production Python</span></div>
-  </div>
-</div>
-
-<main>
-
-  <section id="about" class="reveal">
-    <div class="about-grid">
-      <div>
-        <p class="tick"><span class="idx">01 /</span> about</p>
-        <h2 class="d2">From switchgear to <span class="hi">stochastic calculus.</span></h2>
-      </div>
-      <div class="about-copy">
-        <p>My path runs from electrical systems at NIT Delhi, through finance automation at
-        Americana in the Gulf, to quantitative finance at Rutgers — and now back to Dubai, where
-        I build analytics that run in production, every night.</p>
-        <p>The work sits where markets, code, and rigorous theory meet: regime modeling with
-        <b>ARIMA-GARCH</b> and hidden Markov models, tail risk with <b>vine copulas</b> and
-        10,000-path Monte Carlo, and multi-objective allocation with <b>HRP, Mean-CVaR, and
-        Black-Litterman</b> — across market, credit, liquidity, and operational risk.</p>
-        <p>I build transparent systems that adapt to volatility and let decision-makers act on
-        evidence, not intuition — from the research notebook all the way down to the Nginx config.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="now" class="reveal">
-    <p class="tick amber"><span class="idx">02 /</span> now</p>
-    <h2 class="d2" style="margin-bottom:2rem">What I'm building <span class="hi-a">right now.</span></h2>
-    <div class="panel amber corner now-wrap">
-      <div class="now-top">
-        <h3 class="d3">Quantitative Researcher &amp; Developer — Akeyra (OperaFO), Dubai</h3>
-        <span class="badge">Dec 2025 — present</span>
-      </div>
-      <p class="lede">
-        Designing and running the quantitative core of a wealth-analytics platform for UAE family
-        offices — end to end, from the research models to the server they run on.
-      </p>
-      <div class="metric-row">
-        <div class="metric"><b>6</b><span>portfolio-construction engines</span></div>
-        <div class="metric"><b>10,000</b><span>copula–Monte Carlo paths per run</span></div>
-        <div class="metric"><b>4</b><span>AAOIFI Sharia standards screened</span></div>
-        <div class="metric"><b>5</b><span>base currencies consolidated</span></div>
-      </div>
-      <p class="lede" style="margin-bottom:1.7rem">
-        A regime-aware GARCH + HMM volatility stack, walk-forward rebalancing across 60–252-day
-        lookbacks, and FX-adjusted attribution — self-hosted on a hardened Linux stack with Nginx,
-        systemd, and per-user authentication.
-      </p>
-      <a class="btn btn-amber" href="experience.html">full role details</a>
-    </div>
-  </section>
-
-  <section id="education" class="reveal">
-    <p class="tick"><span class="idx">03 /</span> education</p>
-    <h2 class="d2" style="margin-bottom:2rem">Five institutions, <span class="hi">one trajectory.</span></h2>
-    <div>
-      <div class="edu-row">
-        <img class="edu-logo" src="assets/img/rutgers.png" alt="Rutgers Business School logo">
-        <div><h3>Rutgers Business School — Master of Quantitative Finance</h3>
-        <p>Financial Modeling · Stochastic Calculus · Risk Management · Quantitative Equity Trading · Fixed Income</p></div>
-        <span class="mono-date">2023 – 2025</span>
-      </div>
-      <div class="edu-row">
-        <img class="edu-logo" src="assets/img/iitg.png" alt="IIT Guwahati logo">
-        <div><h3>IIT Guwahati — PG Certification in AI &amp; ML</h3>
-        <p>Deep Learning (DNN, RNN, CNN, LSTM) · Reinforcement Learning · Probabilistic Graphical Models</p></div>
-        <span class="mono-date">2020 – 2021</span>
-      </div>
-      <div class="edu-row">
-        <img class="edu-logo" src="assets/img/oxford.png" alt="Oxford Brookes University logo">
-        <div><h3>Oxford Brookes, UK — ACCA</h3>
-        <p>Financial Accounting · Management Accounting · Financial Management · Performance Management</p></div>
-        <span class="mono-date">2020 – 2023</span>
-      </div>
-      <div class="edu-row">
-        <img class="edu-logo" src="assets/img/ibmi.png" alt="IBMI Berlin logo">
-        <div><h3>IBMI Berlin — Global Governance</h3>
-        <p>Global Governance · International Law · International Politics · Essential Management Skills</p></div>
-        <span class="mono-date">2018 – 2019</span>
-      </div>
-      <div class="edu-row">
-        <img class="edu-logo" src="assets/img/nitd.png" alt="NIT Delhi logo">
-        <div><h3>NIT Delhi — B.Tech, Electrical &amp; Electronics Engineering</h3>
-        <p>Computational Methods · Signal Processing · Embedded Optimization · Field Modeling</p></div>
-        <span class="mono-date">2016 – 2020</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="reveal">
-    <p class="tick"><span class="idx">04 /</span> toolkit</p>
-    <h2 class="d2" style="margin-bottom:2rem">Research code to <span class="hi">running systems.</span></h2>
-    <div class="skill-grid">
-      <div class="panel panel-h skill-card">
-        <h3>programming &amp; data</h3>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">pandas · NumPy</span><span class="chip">scikit-learn</span>
-          <span class="chip">cvxpy · pymoo</span><span class="chip">arch · statsmodels</span><span class="chip">TensorFlow / Keras</span>
-          <span class="chip">R (VineCopula)</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">MATLAB</span><span class="chip">VBA</span>
-        </div>
-      </div>
-      <div class="panel panel-h skill-card">
-        <h3>risk &amp; regulation</h3>
-        <div class="chips">
-          <span class="chip">VaR / ES (CVaR)</span><span class="chip">PFE</span><span class="chip">Stress testing</span>
-          <span class="chip">Model validation</span><span class="chip">IFRS 9</span><span class="chip">Basel III / IV</span>
-          <span class="chip">AAOIFI Sharia screening</span><span class="chip">KRI / KPI frameworks</span>
-        </div>
-      </div>
-      <div class="panel panel-h skill-card">
-        <h3>quant &amp; production</h3>
-        <div class="chips">
-          <span class="chip">GARCH / HMM</span><span class="chip">Monte Carlo + variance reduction</span>
-          <span class="chip">Time-series forecasting</span><span class="chip">Drift detection</span>
-          <span class="chip">Linux · Nginx · systemd</span><span class="chip">SSL / Cloudflare</span>
-          <span class="chip">Streamlit</span><span class="chip">Git / CI</span><span class="chip">RPA / UiPath</span>
-        </div>
-      </div>
-      <div class="panel panel-h skill-card">
-        <h3>bi &amp; reporting</h3>
-        <div class="chips">
-          <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Plotly / Dash</span>
-          <span class="chip">Excel (Power Query, VBA)</span><span class="chip">LaTeX</span><span class="chip">ReportLab</span>
+  <header class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <div class="hero-row">
+        <img src="headshot.png" alt="Arun Govind" class="hero-avatar" loading="eager">
+        <div class="hero-text">
+          <h1>
+            <span class="char"><span>A</span></span><span class="char"><span>r</span></span><span class="char"><span>u</span></span><span class="char"><span>n</span></span>
+            <span class="char" style="margin-left: 0.75rem;"><span>G</span></span><span class="char"><span>o</span></span><span class="char"><span>v</span></span><span class="char"><span>i</span></span><span class="char"><span>n</span></span><span class="char"><span>d</span></span>
+          </h1>
+          <p>Quantitative Researcher &amp; Developer | Building Akeyra | MQF | PGDC AI &amp; ML</p>
+          <div class="hero-links">
+            <a href="mailto:arungovindmangalath@gmail.com" class="magnetic-link">arungovindmangalath@gmail.com</a>
+            <a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer" class="magnetic-link">GitHub</a>
+            <a href="https://linkedin.com/in/arun-govind-19849261" target="_blank" rel="noopener noreferrer" class="magnetic-link">LinkedIn</a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="contact-band reveal" id="contact">
-    <p class="tick amber center"><span class="idx">05 /</span> contact</p>
-    <h2 class="d2">Let's talk markets, models,<br><span class="hi-a">or mandates.</span></h2>
-    <p>Based in Dubai, open to relocation globally. Reach out about quant research, risk engineering, or what I'm building.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:arungovindmangalath@gmail.com">arungovindmangalath@gmail.com</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/arun-govind-19849261" target="_blank" rel="noopener noreferrer">linkedin</a>
-    </div>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m Arun Govind, a data-driven strategist and financial engineer focused on uncovering structure in uncertainty. My journey spans electrical systems at NIT Delhi, automation at Americana, and quantitative finance at Rutgers.</p>
+      <p>I bridge quantitative finance and applied AI: regime modeling with ARIMA–GARCH, tail-risk with vine copulas, and portfolio optimization with CVaR and HRP, I enjoy work that blends code, markets, and rigorous theory.</p>
+      <p>Whether forecasting volatility on LOB data or automating workflows with RPA/VBA, I prioritize robust, transparent financial systems that adapt to volatility and empower decision-makers through evidence, not intuition.</p>
+    </section>
 
-</main>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="edu-grid">
+        <div class="edu-entry">
+          <img src="rutgers.png" alt="Rutgers Logo" class="edu-logo">
+          <div class="edu-details">
+            <div class="edu-header">
+              <h3>Rutgers Business School, Newark – Master of Quant. Finance</h3>
+              <span class="edu-date">May 2023 – May 2025</span>
+            </div>
+            <p>Courses: Financial Modeling, Stochastic Calculus, Risk Management, Quantitative Equity Trading, Term Structure Models, AI Methods</p>
+          </div>
+        </div>
+        <div class="edu-entry">
+          <img src="iitg.png" alt="IIT Guwahati Logo" class="edu-logo">
+          <div class="edu-details">
+            <div class="edu-header">
+              <h3>Indian Institute of Technology, Guwahati – PGDC in AI & ML</h3>
+              <span class="edu-date">Aug 2020 – Oct 2021</span>
+            </div>
+            <p>Courses: Deep Learning, Reinforcement Learning, PGMs, Computer Vision, Scalable Querying, Image Hashing</p>
+          </div>
+        </div>
+        <div class="edu-entry">
+          <img src="oxford.png" alt="Oxford Brookes Logo" class="edu-logo">
+          <div class="edu-details">
+            <div class="edu-header">
+              <h3>Oxford Brookes, UK – ACCA</h3>
+              <span class="edu-date">Jan 2020 – Jun 2023</span>
+            </div>
+            <p>Courses: Financial Accounting, Management Accounting, Financial Management, Performance Management (ACCA Reg #: 4939516)</p>
+          </div>
+        </div>
+        <div class="edu-entry">
+          <img src="ibmi.png" alt="IBMI Berlin Logo" class="edu-logo">
+          <div class="edu-details">
+            <div class="edu-header">
+              <h3>IBMI Berlin – Global Governance</h3>
+              <span class="edu-date">Aug 2018 – Aug 2019</span>
+            </div>
+            <p>Diplomas: Global Governance, International Law, International Politics, Essential Management Skills</p>
+          </div>
+        </div>
+        <div class="edu-entry">
+          <img src="nitd.png" alt="NIT Delhi Logo" class="edu-logo">
+          <div class="edu-details">
+            <div class="edu-header">
+              <h3>National Institute of Technology, Delhi – B.Tech in Electrical Engineering</h3>
+              <span class="edu-date">Aug 2016 – May 2020</span>
+            </div>
+            <p>Courses: Computational Engineering, Signal Processing, Embedded Optimization, Field Modeling</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<footer>
-  <div class="foot-inner">
-    <span>© 2026 Arun Govind</span>
-    <span>Dubai · United Arab Emirates</span>
-    <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
-  </div>
-</footer>
+  <footer>
+    © 2025 Arun Govind. All rights reserved.
+  </footer>
 
-<script src="js/site.js"></script>
+  <!-- ✨ NEW: JavaScript library for particle background -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <!-- ✨ NEW: JavaScript for all animations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // --- 1. Interactive Particle Background ---
+      particlesJS("particles-js", {
+        "particles": {
+          "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+          "color": { "value": "#818cf8" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.4, "random": true },
+          "size": { "value": 3, "random": true },
+          "line_linked": { "enable": true, "distance": 150, "color": "#94a3b8", "opacity": 0.2, "width": 1 },
+          "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+          "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+        },
+        "retina_detect": true
+      });
+
+      // --- 2. Custom Cursor ---
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorCircle = document.querySelector('.cursor-circle');
+      window.addEventListener('mousemove', e => {
+        cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        cursorCircle.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+
+      // --- 3. Hero Background Parallax ---
+      const heroBackground = document.querySelector('.hero-background');
+      window.addEventListener('scroll', () => {
+        const scrollValue = window.scrollY;
+        heroBackground.style.transform = `scale(1.15) translateY(${scrollValue * 0.2}px)`;
+      });
+
+      // --- 4. Scroll-Triggered Section Animations ---
+      const sections = document.querySelectorAll('section');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Stagger education cards
+            if(entry.target.id === 'education') {
+              const eduEntries = entry.target.querySelectorAll('.edu-entry');
+              eduEntries.forEach((card, index) => {
+                  card.style.transition = `opacity 0.6s ease-out ${index * 0.15}s, transform 0.6s ease-out ${index * 0.15}s`;
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+              });
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => {
+        observer.observe(section);
+        // Pre-hide education cards for staggered animation
+        if(section.id === 'education') {
+            const eduEntries = section.querySelectorAll('.edu-entry');
+            eduEntries.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+            });
+        }
+      });
+      
+      // --- 5. Magnetic Links (Optional but cool) ---
+      const magneticLinks = document.querySelectorAll('.magnetic-link');
+      magneticLinks.forEach(link => {
+        link.addEventListener('mousemove', e => {
+          const rect = link.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          link.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.transform = 'translate(0, 0)';
+        });
+      });
+
+    });
+  </script>
+
 </body>
 </html>

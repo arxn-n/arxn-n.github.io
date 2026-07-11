@@ -1,163 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experience — Arun Govind</title>
-  <meta name="description" content="Professional experience of Arun Govind: Akeyra, Rutgers, Go5, Americana, JPMorgan Chase, and more.">
-  <meta name="theme-color" content="#06080d">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2306080d'/%3E%3Crect x='4' y='4' width='56' height='56' rx='9' fill='none' stroke='%236fd6e8' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='24' font-weight='600' fill='%236fd6e8' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience | Arun Govind</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;640;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-start: #0c0a1a;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent-primary: #818cf8;
+      --accent-secondary: #c7d2fe;
+      --card-bg: rgba(29, 31, 58, 0.5);
+      --card-border: rgba(129, 140, 248, 0.2);
+      --shadow: rgba(0, 0, 0, 0.2);
+      --accent-glow: rgba(129, 140, 248, 0.3); 
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-start);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+      /* ✨ Hiding default cursor */
+      cursor: none;
+    }
+    
+    /* --- ✨ NEW: Interactive Particle & Cursor Styles --- */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    
+    .cursor {
+        position: fixed;
+        z-index: 1000;
+        pointer-events: none;
+        transition: transform 0.1s ease;
+    }
+    .cursor-dot {
+        width: 6px;
+        height: 6px;
+        background-color: var(--accent-secondary);
+        border-radius: 50%;
+    }
+    .cursor-circle {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--accent-secondary);
+        border-radius: 50%;
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+    }
+    body:has(a:hover) .cursor-circle {
+        transform: scale(1.5);
+        opacity: 0.5;
+        border-color: #fff;
+    }
+    
+    /* General-purpose fade-in-up animation */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 1rem 1.5rem; text-align: center;
+      background: rgba(12, 10, 26, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    nav a {
+      margin: 0 1.25rem; color: var(--text-secondary); text-decoration: none;
+      font-weight: 500; font-size: 0.95rem; display: inline-block;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav a:hover { color: var(--accent-secondary); transform: translateY(-2px); }
+
+    header.page-header {
+      text-align: center; padding: 4rem 1.5rem 3rem;
+      /* ✨ Animate header on scroll */
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    header.page-header.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    header.page-header h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem); margin-bottom: 0.75rem;
+      font-weight: 700; letter-spacing: -1.5px; color: var(--accent-secondary);
+    }
+    header.page-header p {
+      font-size: clamp(1.1rem, 2.5vw, 1.2rem); color: var(--text-secondary);
+      max-width: 650px; margin: 0 auto;
+    }
+
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+    
+    .timeline { 
+      position: relative; 
+      padding-left: 50px; 
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px;
+      width: 2px; background: var(--card-border);
+    }
+    #timeline-progress {
+      position: absolute;
+      left: 15px;
+      top: 10px;
+      width: 2px;
+      background: var(--accent-secondary);
+      height: 0;
+      transition: height 0.1s linear;
+    }
+
+    /* ✨ MODIFIED: Experience cards now animate on scroll */
+    .experience-entry {
+      position: relative; margin-bottom: 2rem;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      backdrop-filter: blur(5px);
+      transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, border-color 0.4s ease-out, opacity 0.6s ease-out;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .experience-entry.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .experience-entry:hover {
+        transform: translateY(-10px) scale(1.03);
+        border-color: rgba(129, 140, 248, 0.6);
+        box-shadow: 0 15px 40px var(--shadow), 0 0 25px var(--accent-glow);
+    }
+
+    .experience-entry::before {
+      content: ''; position: absolute; left: -43px; top: 22px; width: 18px; height: 18px;
+      background-color: var(--accent-primary); border-radius: 50%;
+      border: 3px solid var(--bg-start); z-index: 1;
+      transition: transform 0.3s ease-out;
+    }
+    
+    .experience-entry:hover::before { transform: scale(1.3); }
+    
+    .company-logo {
+        flex-shrink: 0; width: 50px; height: 50px; object-fit: contain;
+        border-radius: 8px; background-color: rgba(255, 255, 255, 0.05); padding: 5px;
+        transition: transform 0.3s ease-out, filter 0.3s ease-out;
+    }
+    
+    .experience-entry:hover .company-logo {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+    
+    .experience-details { flex-grow: 1; }
+    .experience-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; }
+    .experience-details h3 { font-size: 1.2rem; font-weight: 500; color: var(--text-primary); }
+    .experience-date { font-size: 0.9rem; color: var(--text-secondary); white-space: nowrap; padding-top: 2px; font-weight: 300; }
+    .experience-details p { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+
+    footer {
+      text-align: center; padding: 2.5rem 1.5rem; background-color: transparent;
+      margin-top: 2rem; font-size: 0.9rem; color: #64748b;
+    }
+    
+    @media (max-width: 768px) {
+      .experience-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      nav a { margin: 0 0.5rem; font-size: 0.9rem; }
+      .timeline { padding-left: 35px; }
+      .experience-entry::before { left: -33px; width: 15px; height: 15px; top: 20px;}
+      .company-logo { width: 40px; height: 40px; }
+      .experience-entry { gap: 1rem; }
+      .cursor { display: none; }
+      body { cursor: auto; }
+    }
+  </style>
 </head>
+
 <body>
+   <div class="cursor">
+     <div class="cursor-dot"></div>
+     <div class="cursor-circle"></div>
+   </div>
+   <div id="particles-js"></div>
 
-<div id="progress"></div>
-<div class="paper" aria-hidden="true"></div>
+   <nav>
+    <a href="index.html">About</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="catchup.html">Catch Up</a>
+    <a href="mailto:arungovindmangalath@gmail.com">Contact</a>
+  </nav>
 
-<nav class="top">
-  <div class="top-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">AG</span>
-      <span class="brand-name">Arun Govind<small>Quant · Dubai</small></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
-    <div class="nav-links" id="navlinks">
-      <a href="index.html">about</a>
-      <a href="experience.html" class="active">experience</a>
-      <a href="projects.html">projects</a>
-      <a href="catchup.html">catch-up</a>
-      <a href="mailto:arungovindmangalath@gmail.com" class="nav-cta">contact</a>
-    </div>
-  </div>
-</nav>
+  <header class="page-header">
+    <h1>Professional Experience</h1>
+    <p>A timeline of my roles in quantitative research, automation, and analytics.</p>
+  </header>
 
-<main style="padding-top:1rem">
-
-  <section class="reveal" style="border-bottom:none">
-    <p class="tick"><span class="idx">/</span> experience</p>
-    <h2 class="d2">Eight years, three continents,<br><span class="hi">one thread.</span></h2>
-    <p class="lede" style="margin:1.1rem 0 2.6rem">From automating finance operations in the Gulf, to research at
-    Rutgers, to building production analytics in Dubai — every role sharpened the same craft: turning
-    uncertainty into systems.</p>
+  <main>
     <div class="timeline">
-      <div class="t-entry current reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel amber corner t-card">
-          <div class="t-head"><h3>Quantitative Researcher &amp; Developer</h3><span class="mono-date">Dec 2025 – Present</span></div>
-          <p class="t-org">Akeyra (formerly OperaFO) · Dubai, UAE</p>
-          <ul>
-            <li>Architected and shipped a <b>9,500-line production Python platform</b>: 6 portfolio-construction models (Max Sharpe, Min Volatility, Risk Parity, Black-Litterman, Max Diversification, Min CVaR), an interactive efficient-frontier explorer, and walk-forward rebalancing across 60–252-day lookbacks.</li>
-            <li>Engineered a regime-aware volatility stack — GARCH(1,1) plus a 3-state HMM (bull, sideways, crisis) — feeding <b>10,000-path copula–Monte Carlo</b> with antithetic variates and moment matching, producing 7 risk metrics per regime.</li>
-            <li>Built an <b>AAOIFI-aligned Sharia screening engine</b> spanning 4 compliance standards and 6 financial-ratio filters, integrated into the optimization pipeline across GCC and global universes.</li>
-            <li>Implemented multi-currency consolidation across <b>5 base currencies</b> (AED, USD, SAR, EUR, GBP) with FX-adjusted return attribution and Zakat-aware reporting for DIFC, ADGM, and offshore mandates.</li>
-            <li>Own the full stack: production deployment on a Hetzner VPS (Ubuntu, Nginx, systemd, Certbot SSL, Cloudflare DNS) with per-user authentication; refactored a monolith into a modular architecture with isolated test surfaces.</li>
-          </ul>
+      <div id="timeline-progress"></div>
+
+      <div class="experience-entry">
+        <img src="akeyra.png" alt="Akeyra Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Quantitative Researcher &amp; Developer – Akeyra (OperaFO), Dubai, UAE</h3><span class="experience-date">Dec 2025 – Present</span></div>
+          <p>Building the quantitative core of a wealth-analytics platform for UAE family offices: 6 portfolio optimization engines, a GARCH + 3-state HMM volatility stack, 10,000-path copula Monte Carlo, and AAOIFI Sharia screening across 5 base currencies. 9,500 lines of production Python, deployed end to end on a self-managed Linux stack (Nginx, systemd, SSL).</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Graduate Research Assistant</h3><span class="mono-date">Jan 2024 – May 2025</span></div>
-          <p class="t-org"><img src="assets/img/rutgers.png" alt="">Rutgers University · Newark, NJ, USA</p>
-          <ul>
-            <li>Built a dual-model forecasting pipeline (ARIMA-GARCH vs LSTM) across 20 S&amp;P 500 stocks: <b>15.2% lower MAE</b> in stable regimes, <b>+10.7% directional accuracy</b> in volatile ones.</li>
-            <li>Deployed forecasts into a $1M simulated DJIA portfolio rebalanced weekly with transaction costs — <b>Sharpe 1.47, +7.93% return, 310 bps drawdown reduction</b> via HRP and Mean-CVaR.</li>
-            <li>Integrated macro filters (CPI, NFP, FOMC), avoiding <b>75% of volatility shocks</b>; tightened frontier confidence bands by 38.6% and improved weight consistency by 33.2%.</li>
-            <li>Packaged the codebase as a reproducible research template (cookiecutter, Make, conda) with data-lineage logs.</li>
-          </ul>
+
+
+      <div class="experience-entry">
+        <img src="rutgers.png" alt="Rutgers University Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Graduate Researcher – Rutgers MQF, USA</h3><span class="experience-date">May 2024 – May 2025</span></div>
+          <p>Developed ARIMA-GARCH and LSTM pipelines across 20 S&P 500 stocks. Integrated macro filters and executed a $1M DJIA backtest with HRP + CVaR. Yield: Sharpe 1.47, 310 bps drawdown cut.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Financial Analyst, Pricing</h3><span class="mono-date">Aug 2022 – Jul 2023</span></div>
-          <p class="t-org"><img src="assets/img/Go5inc.png" alt="">Go5 Incorporation · India</p>
-          <ul>
-            <li>Deployed an XGBoost + logistic-regression demand-forecasting stack — <b>28.4% accuracy uplift</b>, 12% less excess inventory.</li>
-            <li>Built scenario models across three economic outlooks, improving margin forecasts by 6% and accelerating break-even by 2 months for two SKUs.</li>
-            <li>Developed a drift-scoring algorithm across 5+ models, cutting drift-triggered misclassifications by 17%; A/B pricing pilots delivered a 3.4% conversion lift.</li>
-          </ul>
+
+      <div class="experience-entry">
+        <img src="rutgers.png" alt="Rutgers University Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Graduate Research Assistant – Rutgers MQF, USA</h3><span class="experience-date">Jan 2024 – May 2024</span></div>
+          <p>Modeled tail risk using R-vine copulas across asset classes. Simulated 10,000 paths and improved VaR accuracy by 27% vs Pearson-based models.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Process Analyst, Finance</h3><span class="mono-date">Mar 2021 – Jul 2022</span></div>
-          <p class="t-org"><img src="assets/img/Americana.png" alt="">Americana (Kuwait Food Company) · UAE</p>
-          <ul>
-            <li>Automated invoice processing and reconciliation with UiPath and VBA bots — <b>40% less manual processing</b>, closings 3 business days faster across all GCC branches.</li>
-            <li>Built liquidity-exposure and vendor-aging dashboards with counterparty risk flags, lowering overdue payables by 18%.</li>
-            <li>Processed $3M+ in monthly settlements; redesigned SAP BODS migration templates across two ERP systems.</li>
-          </ul>
+
+      <div class="experience-entry">
+        <img src="Go5inc.png" alt="Go5 Incorporation Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Analyst - Pricing & Planning – Go5 Incorporation, India</h3><span class="experience-date">Aug 2022 – Jul 2023</span></div>
+          <p>Built XGBoost forecasting system (↑28.4% accuracy), reduced inventory by 12%, and designed macro stress-testing scenario models for SKU-level decisions.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Data Analytics Intern</h3><span class="mono-date">Aug 2020 – Oct 2020</span></div>
-          <p class="t-org"><img src="assets/img/JPMorgan.png" alt="">JPMorgan Chase &amp; Co. · USA</p>
-          <ul>
-            <li>Built a Python dashboard of 5Y+ rolling stock-correlation matrices, flagging mispriced equities for trading teams.</li>
-            <li>Scraped and structured <b>10,000+ company profiles</b> via RPA, boosting research efficiency by 52%; shipped a reusable Python library with unit tests and CI.</li>
-          </ul>
+
+      <div class="experience-entry">
+        <img src="Americana.png" alt="Americana Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Process Analyst – Americana, UAE</h3><span class="experience-date">Mar 2021 – Jul 2022</span></div>
+          <p>Automated invoice workflows with UiPath & VBA. Enabled 40% faster closings and reconciled $3M+ monthly settlements across GCC branches with SAP BODS.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Quant Automation Intern</h3><span class="mono-date">Dec 2019 – Jan 2020</span></div>
-          <p class="t-org"><img src="assets/img/RetailAutomata.png" alt="">Retail Automata Analytics · USA</p>
-          <ul>
-            <li>Automated product-insight workflows with RPA and logistic regression across 12,000+ listings, reducing manual curation by 90%.</li>
-          </ul>
+      
+      <div class="experience-entry">
+        <img src="JPMorgan.png" alt="JPMorgan Chase Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Data Analytics Intern – JPMorgan Chase, USA</h3><span class="experience-date">Aug 2020 – Oct 2020</span></div>
+          <p>Built Python dashboards for 5Y rolling correlation visualization; implemented web scrapers to automate data ingestion. Cut analyst lookup time by 70%.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Fundraising &amp; Analytics Intern</h3><span class="mono-date">Aug 2019 – Sep 2019</span></div>
-          <p class="t-org"><img src="assets/img/hwcouncil.jpg" alt="">Humanity Welfare Council · India</p>
-          <ul>
-            <li>Led donor analytics with clustering and dashboards, improving engagement conversion by 23%.</li>
-          </ul>
+
+      <div class="experience-entry">
+        <img src="RetailAutomata.png" alt="Retail Automata Analytics Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Quant Automation Intern – Retail Automata Analytics, USA</h3><span class="experience-date">Dec 2019 – Jan 2020</span></div>
+          <p>Automated product insight workflows using RPA and logistic regression, processing 12,000+ listings and reducing manual curation by 90%.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Network Analytics Intern</h3><span class="mono-date">Jun 2019 – Jul 2019</span></div>
-          <p class="t-org"><img src="assets/img/nepaltelecom.png" alt="">Nepal Telecom · Nepal</p>
-          <ul>
-            <li>Analyzed GSM service quality and churn; proposed a tower-relocation plan from z-score benchmarks.</li>
-          </ul>
+
+      <div class="experience-entry">
+        <img src="nepaltelecom.png" alt="Nepal Telecom Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Network Analytics Intern – Nepal Telecom, Nepal</h3><span class="experience-date">Jun 2019 – Jul 2019</span></div>
+          <p>Analyzed GSM service quality and user churn; benchmarked provider performance and proposed telecom tower relocation plan based on z-score metrics.</p>
         </div>
       </div>
-      <div class="t-entry reveal">
-        <span class="t-dot" aria-hidden="true"></span>
-        <div class="panel t-card">
-          <div class="t-head"><h3>Systems Intern</h3><span class="mono-date">May 2018 – Jul 2018</span></div>
-          <p class="t-org"><img src="assets/img/maxelec.jpg" alt="">Max Elect · UAE</p>
-          <ul>
-            <li>Assisted with low-voltage switchgear, capacitor banks, and SCADA/PLC panels; produced AutoCAD schematics and QHSE documentation.</li>
-          </ul>
+
+      <div class="experience-entry">
+        <img src="maxelec.jpg" alt="Max Elect UAE Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Systems Intern – Max Elect UAE, UAE</h3><span class="experience-date">May 2018 – Jul 2018</span></div>
+          <p>Assisted in design & installation of low-voltage switchgear, capacitor banks, SCADA/PLC panels. Built AutoCAD schematics and QHSE-compliant commissioning.</p>
         </div>
       </div>
+      
+      <div class="experience-entry">
+        <img src="hwcouncil.jpg" alt="Humanity Welfare Council Logo" class="company-logo">
+        <div class="experience-details">
+          <div class="experience-header"><h3>Fundraising & Analytics Intern – Humanity Welfare Council, India</h3><span class="experience-date">Aug 2019 – Sep 2019</span></div>
+          <p>Led donor analytics using clustering and dashboards; improved engagement conversion by 23% and supported strategic volunteer expansion planning.</p>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </main>
 
-</main>
+  <footer>
+    © 2025 Arun Govind. All rights reserved.
+  </footer>
 
-<footer>
-  <div class="foot-inner">
-    <span>© 2026 Arun Govind</span>
-    <span>Dubai · United Arab Emirates</span>
-    <span><a href="https://github.com/arxn-n" target="_blank" rel="noopener noreferrer">github.com/arxn-n</a></span>
-  </div>
-</footer>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    
+      // --- 1. Particle Background ---
+      particlesJS("particles-js", {
+        "particles": {
+          "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+          "color": { "value": "#818cf8" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.4, "random": true },
+          "size": { "value": 3, "random": true },
+          "line_linked": { "enable": true, "distance": 150, "color": "#94a3b8", "opacity": 0.2, "width": 1 },
+          "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+          "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+        },
+        "retina_detect": true
+      });
 
-<script src="js/site.js"></script>
+      // --- 2. Custom Cursor ---
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorCircle = document.querySelector('.cursor-circle');
+      window.addEventListener('mousemove', e => {
+        cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        cursorCircle.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+
+      // --- 3. Scroll-Triggered Animations ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      // Observe the header and each experience card
+      const header = document.querySelector('.page-header');
+      if(header) observer.observe(header);
+      
+      const timelineEntries = document.querySelectorAll('.experience-entry');
+      timelineEntries.forEach(entry => observer.observe(entry));
+      
+      // --- 4. Timeline Progress Bar Animation on Scroll ---
+      const timelineProgress = document.getElementById('timeline-progress');
+      const timeline = document.querySelector('.timeline');
+
+      const handleScroll = () => {
+          if (!timeline || !timelineProgress) return;
+          const timelineRect = timeline.getBoundingClientRect();
+          const firstEntry = timeline.querySelector('.experience-entry:first-of-type');
+          const lastEntry = timeline.querySelector('.experience-entry:last-of-type');
+          if (!firstEntry || !lastEntry) return;
+
+          const firstDot = firstEntry.querySelector('.company-logo');
+          const lastDot = lastEntry.querySelector('.company-logo');
+          if(!firstDot || !lastDot) return;
+          
+          const firstDotRect = firstDot.getBoundingClientRect();
+          const lastDotRect = lastDot.getBoundingClientRect();
+          
+          const timelineStart = timelineRect.top + window.scrollY;
+          const firstDotCenterY = firstDotRect.top + window.scrollY + (firstDotRect.height / 2);
+          const lastDotCenterY = lastDotRect.top + window.scrollY + (lastDotRect.height / 2);
+          
+          const pathLength = lastDotCenterY - firstDotCenterY;
+          
+          // Calculate scroll progress relative to the start of the path
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
+          let progress = (scrollY + windowHeight - firstDotCenterY) / pathLength;
+          progress = Math.max(0, Math.min(1, progress));
+          
+          const progressHeight = progress * pathLength;
+          
+          timelineProgress.style.height = `${progressHeight}px`;
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial call
+    });
+  </script>
+
 </body>
 </html>
